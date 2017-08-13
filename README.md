@@ -26,3 +26,40 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# GENERATE MODEL WITH CLI
+//create planet model
+ng generate class shared/planets model
+ 
+//create planet service
+ng generate service shared/planets
+
+#TUTORIAL ANGULAR 2::
+https://scotch.io/courses/getting-started-with-angular-2
+http://bulma.io/documentation/overview/start/
+https://code.daypilot.org/11244/angular-2-gantt-chart-component-typescript-php-mysql
+https://code.daypilot.org/32525/angular-2-hotel-room-booking-php-mysql
+https://www.youtube.com/watch?v=mU4S0ZAC1FE&t=2871s
+
+#ANGULAR 2 MATERIAL DESIGN
+https://github.com/angular/material2
+http://www.mithunvp.com/angular-material-2-angular-cli-webpack/
+
+#TUTORIAL IONIC 2::
+https://www.youtube.com/watch?v=LUBb0aC6L3I
+
+#TUTORIAL MEAN STACK::
+https://www.youtube.com/watch?v=PFP0oXNNveg
+
+#TUTORIAL ANGULAR CRUD Project
+https://www.youtube.com/watch?v=DAUlZO2RALw
+
+#TUTORIAL ANGULAR ROUTER and Navigate
+http://www.concretepage.com/angular-2/angular-2-routing-and-navigation-example
+
+#TUTORIAL ANGULAR HTTP GET
+http://www.concretepage.com/angular-2/angular-2-http-get-example
+http://www.concretepage.com/angular-2/angular-2-http-get-parameters-headers-urlsearchparams-requestoptions-example
+
+#TUTORIAL ANGULAR HTTP POST
+http://www.concretepage.com/angular-2/angular-2-http-post-example
