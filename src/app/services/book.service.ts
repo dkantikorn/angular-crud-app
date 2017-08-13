@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { Book } from '../book.model';
+import { BOOKS } from '../mock-book-data';
 
 @Injectable()
 export class BookService {
@@ -84,5 +85,38 @@ export class BookService {
     private handleErrorPromise(error: Response | any) {
         console.error(error.message || error);
         return Promise.reject(error.message || error);
+    }
+
+
+    /**
+     * 
+     * ------------------------------------------------------------------------------------
+     * For book library
+     * ------------------------------------------------------------------------------------
+     */
+    getBooks(): Promise<Book[]> {
+        return Promise.resolve(BOOKS);
+    }
+
+    addBook(book:Book): void {
+		this.getBooks().then(books => {
+		     let maxIndex = books.length - 1;
+		     let bookWithMaxIndex = books[maxIndex];
+		     book.id = (parseInt(bookWithMaxIndex.id) + 1).toString();
+		     books.push(book);}
+		);
+    }
+    
+    getBook(id: string): Promise<Book> {
+        return this.getBooks()
+            .then(books => books.find(book => book.id === id));
+    }
+
+    deleteBook(id: string): void {
+		this.getBooks().then(books => {
+		    let book = books.find(ob => ob.id === id);
+                    let bookIndex = books.indexOf(book);
+                    books.splice(bookIndex, 1);}
+		);
     }
 } 

@@ -1,0 +1,60 @@
+<div class="container">
+  <h3 class="title">Book Details</h3>
+
+  <table class="table table-bordered is-striped is-narrow is-fullwidth">
+    <thead class="thead">
+      <tr>
+        <th>Book ID</th>
+        <th>Book Name</th>
+        <th>Category</th>
+        <th>Writer</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{book.id}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.category}}</td>
+        <td>{{book.writer}}</td>
+        <td>
+          <div class="field is-grouped">
+            <div class="control">
+              <a [routerLink]="['/view-detail', book.id]" class="button is-primary is-small">
+                <span class="icon is-small">
+                  <i class="fa fa-search"></i>
+                </span>
+                <span>
+                    รายละเอียด
+                </span>
+              </a>
+            </div>
+
+            <div class="control">
+              <button (click)="updateBook(book.id)" class="button is-warning is-small">
+                <span class="icon is-small">
+                  <i class="fa fa-pencil"></i>
+                </span>
+                <span>
+                    แก้ไข
+                </span>
+              </button>
+            </div>
+
+            <div class="control">
+              <button (click)="deleteBook(book.id)" class="button is-danger is-small">
+                <span class="icon is-small">
+                  <i class="fa fa-trash"></i>
+                </span>
+                <span>
+                    ลบ
+                </span>
+              </button>
+            </div>
+          </div>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -22,7 +22,7 @@ import { Planets } from './shared/planets.model';
 import { PlanetsService } from './shared/planets.service';
 import { LoginService } from './services/login.service';
 
-//Import each component
+//Import each componentx
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { SayComponent } from './say/say.component';
@@ -41,6 +41,14 @@ import { LoginComponent } from './login/login.component';
 import { BookObservableComponent } from './book-observable/book-observable.component';
 import { BookPromiseComponent } from './book-promise/book-promise.component';
 import { BookGetParamsComponent } from './book-get-params/book-get-params.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+//Foe book library
+import { BookComponent } from './book/book.component';
+import { BookDetailComponent } from './book/book-detail.component';
+import { BookAddComponent } from './book/book-add.component';
+import { BookUpdateComponent } from './book/book-update.component';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +68,12 @@ import { BookGetParamsComponent } from './book-get-params/book-get-params.compon
     LoginComponent,
     BookObservableComponent,
     BookPromiseComponent,
-    BookGetParamsComponent
+    BookGetParamsComponent,
+    PageNotFoundComponent,
+    BookComponent,
+    BookDetailComponent,
+    BookAddComponent,
+    BookUpdateComponent
   ],
   imports: [
     BrowserModule,

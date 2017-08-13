@@ -1,0 +1,23 @@
+<div class="container">
+  <h3 class="title">View Detail</h3>
+  <ul [ngClass]="'view-detail'">
+    <li>Id: {{book.id}}</li>
+    <li>Name: {{book.name}}</li>
+    <li>Category: {{book.category}}</li>
+    <li>Writer: {{book.writer}}</li>
+  </ul>
+
+  <hr/>
+  <div class="field is-grouped">
+    <div class="control">
+      <button (click)="goBack()" class="button is-info is-small">Go Back</button>
+    </div>
+    <div class="control">
+      <button (click)="updateBook(book.id)" class="button is-warning is-outlined is-small">Update</button>
+    </div>
+    <div class="control">
+      <a [routerLink]="['/buy-book']" class="button is-success is-small">Buy Book</a>
+    </div>
+  </div>
+
+</div>

@@ -10,9 +10,14 @@ import { ContactComponent } from './contact/contact.component';
 import { DemoComponent } from './demo/demo.component';
 import { ProvinceComponent } from './province/province.component';
 import { PlanetsComponent } from './planets/planets.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+import { BookComponent } from './book/book.component';
+import { BookDetailComponent } from './book/book-detail.component';
+import { BookAddComponent } from './book/book-add.component';
+import { BookUpdateComponent } from './book/book-update.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
     { path: 'user', component: UserComponent },
     { path: 'user/:page/:id', component: UserComponent },
@@ -22,7 +27,18 @@ const routes: Routes = [
     { path: 'planets', component: PlanetsComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'demo', component: DemoComponent },
-    { path: '**', redirectTo: '/', pathMatch: 'full' }
+
+
+
+
+    { path: 'view-detail/:id', component: BookDetailComponent },		  
+	{ path: 'add-book', component: BookAddComponent },
+	{ path: 'manage-book', component: BookComponent },
+    { path: 'update-book/:id', component: BookUpdateComponent },
+    
+
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+	{ path: '**', component: PageNotFoundComponent }
 ];
 
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import { UserService } from '../services/user.service';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-user',
@@ -35,6 +37,7 @@ export class UserComponent implements OnInit {
   findListAllUsers() {
     this.page = 'index';
     this._userService.loadAllUsers().subscribe(response => {
+      console.log(response);
       this.userList = response.users;
       console.log(response);
     });
@@ -50,13 +53,17 @@ export class UserComponent implements OnInit {
       console.log(response);
     });
 
-    this.router.navigate(['user/view/'+params]);
+    this.router.navigate(['/user/view' , params]);
   }
 
   // Version making link with routerLink="" directive
   //Function load a user infomation whare match parameter id
   //Function for view page
   routerLinkFindUserByUserId() {
+    // this.route.params
+    //   .switchMap((params: Params) => this.bookService.getBook(+params['id']))
+    //   .subscribe(book => this.book = book);
+
     this.page = 'view';
     this._route.params.subscribe(params => {
       const id = params['id'];

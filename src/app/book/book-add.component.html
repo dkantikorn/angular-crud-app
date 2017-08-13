@@ -1,0 +1,33 @@
+<div class="container">
+  <h3 class="title">Add Book</h3>
+  <div class="field">
+    <label class="label">Name: </label>
+     <div class="control">
+       <input class="input" [(ngModel)]="book.name" />
+     </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Category: </label>
+     <div class="control">
+       <input class="input" [(ngModel)]="book.category" />
+     </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Writer: </label>
+     <div class="control">
+       <input class="input" [(ngModel)]="book.writer" />
+     </div>
+  </div>
+
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-primary" (click)="addBook()">Add</button>
+    </div>
+    <div class="control">
+      <button class="button is-info" (click)="goBack()">Cancel</button>
+    </div>
+  </div>
+</div>

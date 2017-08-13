@@ -13,12 +13,18 @@
 
     <div id="nav-menu" class="nav-right nav-menu">
       <a class="nav-item" routerLinkActive="is-active" routerLink="/contact">Contact</a>
+
+      <a class="nav-item" routerLinkActive="is-active" routerLink="/add-book">Add Book</a>
+      <a class="nav-item" routerLinkActive="is-active" routerLink="/manage-book">Manage Book</a>
+
       <a class="nav-item" routerLinkActive="is-active" routerLink="demo">Demo</a>
     </div>
-    
+
   </nav>
 
-  <router-outlet>
-    <!-- Directive for the router outlet each component directive must to used it for render  -->
-  </router-outlet>
+  <div class="container">
+    <router-outlet>
+      <!-- Directive for the router outlet each component directive must to used it for render  -->
+    </router-outlet>
+  </div>
 </div>

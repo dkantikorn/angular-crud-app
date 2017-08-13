@@ -1,0 +1,29 @@
+<div class="container">
+  <h3 class="title">Update Book</h3>
+  <!-- <div class="field">
+    <label class="label">Id: </label> {{book.id}}
+  </div> -->
+  
+  <div class="field">
+     <label class="label">Name: </label>
+    <div class="control">
+      <input class="input" [(ngModel)]="book.name" />
+    </div>
+  </div>
+  <div class="field">
+     <label class="label">Category: </label>
+    <div class="control">
+      <input class="input" [(ngModel)]="book.category" />
+    </div>
+  </div>
+  <div class="field">
+     <label class="label">Writer: </label>
+      <div class="control">
+        <input class="input" [(ngModel)]="book.writer" />
+      </div>
+  </div>
+  <div class="field">
+    <button class="button is-primary" (click)="goBack()">OK</button>
+    <button class="button is-info" (click)="goBack()">Go Back</button>
+  </div>
+</div>
