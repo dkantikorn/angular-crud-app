@@ -1,0 +1,16 @@
+<table class="table is-bordered is-striped is-narrow is-fullwidth">
+  <thead class="thead">
+    <tr>
+      <th class="has-text-centered">province code</th>
+      <th>name</th>
+      <th>status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let province of provinceList">
+      <td class="has-text-centered">{{province.Province.id}}</td>
+      <td>{{province.Province.name}}</td>
+      <td>{{province.Province.status}}</td>
+    </tr>
+  </tbody>
+</table>

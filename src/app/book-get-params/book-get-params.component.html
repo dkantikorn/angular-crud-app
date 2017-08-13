@@ -1,0 +1,143 @@
+<div class="container">
+  <hr>
+  <h3 class="title">Book Details</h3>
+  <table class="table is-bordered is-striped is-narrow is-fullwidth">
+    <thead class="thead">
+      <tr>
+        <th> Id</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Writer</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let bk of allBooks">
+      <td>{{bk.id}}</td>
+      <td>{{bk.name}}</td>
+      <td>{{bk.category}}</td>
+      <td>{{bk.writer}}</td>
+    </tr>
+  </table>
+
+
+  <hr/>
+  <h3 class="title">Get Book by ID </h3>
+  <div>
+    <form #bookByIdForm="ngForm" (ngSubmit)="bookById(bookByIdForm)">
+      <div class="field">
+        <label class="label">Enter Book Id:</label>
+        <div class="control">
+          <input name="bookId" class="input" ngModel required #bookId="ngModel">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-info" [disabled]="bookByIdForm.invalid">Submit</button>
+        </div>
+      </div>
+      
+    </form>
+  </div>
+  <br/>
+  <div *ngIf="bookByIdForm.submitted">
+    <div *ngIf="book; else loading">
+      <table class="table is-bordered is-striped is-narrow is-fullwidth">
+        <thead class="thead">
+          <tr>
+            <th> Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Writer</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>{{book.id}}</td>
+          <td>{{book.name}}</td>
+          <td>{{book.category}}</td>
+          <td>{{book.writer}}</td>
+        </tr>
+      </table>
+    </div>
+    <ng-template #loading>
+      <div *ngIf="dataAvailableById; else notAvailable">
+        Loading data...
+      </div>
+      <ng-template #notAvailable> Data not Aavailable. </ng-template>
+    </ng-template>
+  </div>
+
+
+
+  <hr/>
+  <h3 class="title">Filter Books </h3>
+  <div class="container">
+    <form #filterBookForm="ngForm" (ngSubmit)="filterBooks(filterBookForm)">
+
+      <div class="field">
+        <label class="label">Category:</label>
+        <div class="control">
+          <div class="select">
+            <select name="category" ngModel>
+             <option value="" disabled>Select a Category</option>
+             <option *ngFor="let category of categories" [ngValue]="category.name">
+                {{ category.name }}
+             </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Writer:</label>
+        <div class="control">
+          <div class="select">
+            <select name="writer" ngModel>
+              <option value="" disabled>Select a Writer</option>
+              <option *ngFor="let writer of writers" [ngValue]="writer.name">
+                {{ writer.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary" [disabled]="filterBookForm.invalid">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <br/>
+
+  <div *ngIf="filterBookForm.submitted">
+    <div *ngIf="filteredListOfBooks; else loading">
+      <table class="table table-bordered is-striped is-narrow is-fullwidth">
+        <thead class="thead">
+          <tr>
+            <th> Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Writer</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let bk of filteredListOfBooks">
+          <td>{{bk.id}}</td>
+          <td>{{bk.name}}</td>
+          <td>{{bk.category}}</td>
+          <td>{{bk.writer}}</td>
+        </tr>
+      </table>
+    </div>
+    <ng-template #loading>
+      <div *ngIf="dataAvailableAfterFilter; else notAvailable">
+        Loading data...
+      </div>
+      <ng-template #notAvailable> Data not Aavailable. </ng-template>
+    </ng-template>
+  </div>
+
+  <p class="help is-danger" *ngIf="errorMessage" [ngClass]="'error'"> {{errorMessage}} </p>
+</div>
+<!-- ./container -->
