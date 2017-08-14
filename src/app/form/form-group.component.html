@@ -1,4 +1,4 @@
-<hr>
+<!-- <hr>
 <div class="container">
   <h3 class="tag is-primary is-large"> Using FormControl with FormGroup </h3>
   <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
@@ -42,4 +42,99 @@
       </div>
     </div>
   </form>
+</div> -->
+<hr>
+<div class="container">
+  <h3 class="tag is-primary is-large"> Using FormControl with FormGroup </h3>
+  <p *ngIf="userForm.invalid && !formSubmitted" [ngClass]="'help is-danger'"> Form not validated. </p>
+  <p *ngIf="formSubmitted" [ngClass]="'help is-success'"> Form submitted successfully. </p> <br/>
+  <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+    <div class="field">
+      <label class="label">Name:</label>
+      <div class="control">
+        <input class="input" formControlName="name" placeholder="Enter Name">
+      </div>
+      <p *ngIf="userName.invalid" [ngClass]="'help is-danger'"> Name is required with 10 max character. </p>
+    </div>
+    <div class="field">
+      <label class="label">Age:</label> 
+      <div class="control">
+        <input class="input" formControlName="age" placeholder="Enter Age">
+      </div>
+      <p *ngIf="userForm.get('age').invalid" [ngClass]="'help is-danger'"> Age is required. </p>
+    </div>
+    <div formGroupName="address">
+      <div class="field">
+        <label class="label">House Number:</label>
+        <div class="control">
+          <input class="input" formControlName="houseNumber" placeholder="Enter House Number">
+        </div>
+        <p *ngIf="userForm.get('address').get('houseNumber').invalid" [ngClass]="'help is-danger'"> House Number is required. </p>
+      </div>
+      <div class="field">
+        <label class="label">City:</label>
+        <div class="control">
+          <input class="input" formControlName="city" placeholder="Enter City">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Country:</label>
+        <div class="control">
+          <input class="input" formControlName="country">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Select Gender:
+          <input class="checkbox" type="radio" formControlName="gender" value="male"> Male
+          <input class="checkbox" type="radio" formControlName="gender" value="female"> Female
+        </label>
+    </div>
+
+    <div class="field">
+      <label class="label">Select Profile:</label>
+      <div class="select">
+        <select formControlName="profile">
+              <option *ngFor="let pf of profiles" [ngValue]="pf.shortName">
+                  {{ pf.name }}
+              </option>
+          </select>
+      </div>
+    </div>
+
+    <div formArrayName="users">
+      <div class="field has-addons" *ngFor="let user of users.controls; index as idx">
+        <div class="control is-expanded">
+          <input class="input is-small" [formControlName]="idx" placeholder="Enter User Name">
+        </div>
+        <div class="control">
+          <button class="button is-danger is-small" type="button" (click)="deleteUserField(idx)">
+              <span class="icon is-small">
+                <i class="fa fa-trash"> </i>
+              </span>
+              <span>Delete</span>
+            </button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary" type="button" (click)="addUserField()">Add More User</button>
+        </div>
+      </div>
+
+    </div>
+
+    <br>
+    <div class="field is-grouped">
+      <div class="control"> <button class="button is-primary" type="submit">Submit</button></div>
+      <div class="control"> <button class="button is-info" type="button" (click)="setAge()">Set Age</button></div>
+      <div class="control"> <button class="button is-success" type="button" (click)="setCountry()">Set Country</button></div>
+      <div class="control"> <button class="button is-warning" type="button" (click)="setDefaultValue()">Set Defaults</button></div>
+      <div class="control"> <button class="button is-danger" type="button" (click)="resetForm()">Reset to Blank</button></div>
+    </div>
+
+  </form>
+  <p *ngIf="usrNameChanges">Name: <b>{{usrNameChanges}}</b> </p>
+  <p *ngIf="usrNameStatus">Name Status: <b>{{usrNameStatus}}</b> </p>
 </div>
