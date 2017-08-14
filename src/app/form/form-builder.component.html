@@ -1,0 +1,117 @@
+<hr>
+<div class="container">
+  <h3 class="tag is-danger is-large"> Using FormBuilder for help build FormControl, FromGroup, FormArray </h3>
+
+  <br/><br/>
+  <h3 class="tag is-warning is-medium">Create New Team</h3>
+  <br/><br/>
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-primary is-large" type="button" (click)="loadTeam('Java Team')"> Load Default Team </button>
+    </div>
+    <div class="control">
+      <button class="button is-warning is-large" type="button" (click)="resetTeamForm()"> Reset </button>
+    </div>
+  </div>
+
+  <div *ngIf="formSubmitted && teamForm.pristine" class="submitted"> Form submitted successfully. </div>
+
+  <div class="team">
+    <form [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
+
+      <div class="field">
+        <label class="label">Team Name :</label>
+        <div class="control">
+          <input class="input" formControlName="teamName">
+        </div>
+        <p *ngIf="teamForm.get('teamName').invalid && teamForm.get('teamName').dirty" class="help is-danger"> Team name is required. </p>
+      </div>
+
+      <div class="field">
+        <label class="label">Team Manager : </label>
+        <div class="control">
+          <input class="input" formControlName="teamManager">
+        </div>
+      </div>
+
+      <b>Department :</b><br>
+      <div formGroupName="teamDept" class="department">
+
+        <div class="field">
+          <label class="label">Department Head :</label>
+          <div class="control"><input class="input" formControlName="deptHead"></div>
+        </div>
+
+        <div class="field">
+          <label class="label">Department Name :</label>
+          <div class="control"><input class="input" formControlName="deptName"></div>
+        </div>
+      </div>
+
+      <div class="all-emp">
+        <b> Employees in Team :</b><br><br>
+        <div formArrayName="employees">
+          <div *ngFor="let emp of empFormArray.controls; let idx = index" [formGroupName]="idx" class="employee">
+            <h4 class="tag is-info is-small">Employee : {{idx + 1}}</h4>
+
+
+            <div class="field">
+              <label class="label">Emp Id :</label>
+              <div class="control"><input class="input" formControlName="empId"></div>
+            </div>
+            <div class="field">
+              <label class="label">Emp Name : </label>
+              <div class="control"><input class="input" formControlName="empName"></div>
+            </div>
+
+            <div class="field">
+              <label class="label">Skill :</label>
+              <div class="select">
+                <select formControlName="skill">
+                  <option *ngFor="let skill of allSkills | async" [ngValue]="skill.name">
+                    {{ skill.displayName }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button class="button is-danger is-small" type="button" (click)="deleteEmployee(idx)">
+                  <span class="icon is-small"><i class="fa fa-trash"></i></span>
+                  <span>Delete</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- <div class="field">
+          <div class="control">
+            <button class="button is-primary is-small" type="button" (click)="addEmployee()">
+              <span class="icon is-small"><i class="fa fa-plus"></i></span>
+              <span>Add More Employee</span>
+            </button>
+          </div>
+        </div> -->
+      </div> <br/>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary" [disabled]="teamForm.invalid">
+            <span class="icon"><i class="fa fa-save"></i></span>
+            <span>SUBMIT</span>
+          </button>
+        </div>
+        <div class="control">
+          <button class="button is-info" type="button" (click)="addEmployee()">
+              <span class="icon"><i class="fa fa-plus"></i></span>
+              <span>Add More Employee</span>
+            </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

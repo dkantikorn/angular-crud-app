@@ -22,6 +22,7 @@ import { BookGetParamsService } from './services/book.get.params.service';
 import { Planets } from './shared/planets.model';
 import { PlanetsService } from './shared/planets.service';
 import { LoginService } from './services/login.service';
+import { TeamManagementService } from './services/team-management.service';
 
 //Import each componentx
 import { AppComponent } from './app.component';
@@ -55,7 +56,7 @@ import { FormComponent } from './form/form.component';
 import { FormControlComponent } from './form/form-control.component';
 import { FormGroupComponent } from './form/form-group.component';
 import { FormArrayComponent } from './form/form-array.component';
-
+import { FormBuilderComponent } from './form/form-builder.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { FormArrayComponent } from './form/form-array.component';
     FormComponent,
     FormControlComponent,
     FormGroupComponent,
-    FormArrayComponent
+    FormArrayComponent,
+    FormBuilderComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +102,8 @@ import { FormArrayComponent } from './form/form-array.component';
     PlanetsService,
     LoginService,
     BookService,
-    BookGetParamsService
+    BookGetParamsService,
+    TeamManagementService
   ],
   bootstrap: [AppComponent]
 })
