@@ -16,6 +16,7 @@ import { BookComponent } from './book/book.component';
 import { BookDetailComponent } from './book/book-detail.component';
 import { BookAddComponent } from './book/book-add.component';
 import { BookUpdateComponent } from './book/book-update.component';
+import { FormComponent } from './form/form.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -36,6 +37,8 @@ const routes: Routes = [
 	{ path: 'manage-book', component: BookComponent },
     { path: 'update-book/:id', component: BookUpdateComponent },
     
+
+    { path: 'form', component: FormComponent },
 
     { path: '', redirectTo: '/home', pathMatch: 'full' },
 	{ path: '**', component: PageNotFoundComponent }

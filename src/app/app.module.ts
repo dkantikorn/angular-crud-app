@@ -1,6 +1,7 @@
+import { ReactiveErrors } from '@angular/forms/src/directives/reactive_errors';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 
@@ -49,6 +50,12 @@ import { BookDetailComponent } from './book/book-detail.component';
 import { BookAddComponent } from './book/book-add.component';
 import { BookUpdateComponent } from './book/book-update.component';
 
+//Form Control, FormGroup,FormArray
+import { FormComponent } from './form/form.component';
+import { FormControlComponent } from './form/form-control.component';
+import { FormGroupComponent } from './form/form-group.component';
+import { FormArrayComponent } from './form/form-array.component';
+
 
 @NgModule({
   declarations: [
@@ -73,11 +80,16 @@ import { BookUpdateComponent } from './book/book-update.component';
     BookComponent,
     BookDetailComponent,
     BookAddComponent,
-    BookUpdateComponent
+    BookUpdateComponent,
+    FormComponent,
+    FormControlComponent,
+    FormGroupComponent,
+    FormArrayComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
     InMemoryWebApiModule.forRoot(BookData)

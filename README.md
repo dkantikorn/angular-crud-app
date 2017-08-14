@@ -64,5 +64,8 @@ http://www.concretepage.com/angular-2/angular-2-http-get-parameters-headers-urls
 #TUTORIAL ANGULAR HTTP POST
 http://www.concretepage.com/angular-2/angular-2-http-post-example
 
+#TUTORIAL ANGULAR FormControl, FromGroup, FormArray
+http://www.concretepage.com/angular-2/angular-2-formcontrol-example
+
 #Vue Admin Themes
 https://github.com/vue-bulma/vue-admin

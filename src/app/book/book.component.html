@@ -1,6 +1,7 @@
 <div class="container">
-  <h3 class="title">Book Details</h3>
 
+  <h3 class="notification is-info is-small">Book Management</h3>
+  <h4 class="tag is-primary is-large">Book List</h4>
   <table class="table table-bordered is-striped is-narrow is-fullwidth">
     <thead class="thead">
       <tr>
@@ -57,4 +58,18 @@
       </tr>
     </tbody>
   </table>
+
+  <div class="field">
+    <div class="control">
+      <!-- <a class="nav-item" routerLinkActive="is-active" routerLink="/add-book">Add Book</a> -->
+      <a routerLink="/add-book" class="button is-success is-medium">
+        <span class="icon">
+          <i class="fa fa-plus is-medium"></i>
+        </span>
+         <span>
+           Add Book
+         </span>
+        </a>
+    </div>
+  </div>
 </div>

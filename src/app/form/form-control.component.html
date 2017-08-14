@@ -1,0 +1,61 @@
+<div class="container">
+  <h3 class="tag is-large is-danger">Using FormControl </h3>
+
+  <div class="form-control">
+    <div class="field">
+      <label class="label">Name:</label>
+      <div class="control">
+        <input class="input" [formControl]="name">
+      </div>
+      <p *ngIf="name.invalid" [ngClass]="'help is-danger'"> Name required with max 15 character. </p>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-primary" (click)="setNameValue()">Set value</button>
+      </div>
+      <div class="control">
+        <button class="button is-danger" (click)="setResetName()">Reset</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Age:</label>
+      <div class="control">
+        <input class="input" [formControl]="age">
+      </div>
+       <p *ngIf="age.invalid" [ngClass]="'help is-danger'"> Age required. </p> 
+    </div>
+
+    <div class="field">
+      <label class="label">City:</label>
+      <div class="control">
+        <input class="input" [formControl]="city">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Country:</label>
+      <div class="control">
+        <input class="input" [formControl]="country">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="checkbox">
+        <input type="checkbox" [checked]="married.value" (change)="changeValue()" /> 
+          Are you married ?
+      </label>
+    </div>
+
+  </div>
+
+  <div class="content">
+    <p>Name: <b>{{ name.value }}</b>, Validation Status: <b>{{ name.status }}</b></p>
+    <p>Age: <b>{{ age.value }}</b>, Validation Status: <b>{{ age.status }}</b></p>
+    <p>City: <span *ngIf="city.value" [ngClass]="'tag is-info is-small'">{{ city.value }}</span> </p>
+    <p>Country: <span *ngIf="country.value" [ngClass]="'tag is-success is-small'">{{ country.value }}</span> </p>
+    <p>Married?: <span *ngIf="married" [ngClass]="'tag is-danger is-small'">{{ married.value }}</span> </p>
+  </div>
+
+</div>

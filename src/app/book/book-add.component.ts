@@ -33,7 +33,8 @@ export class BookAddComponent implements OnInit {
 
   addBook(): void {
     this.bookService.addBook(this.book);
-    this.router.navigate(['/home']);
+    //this.router.navigate(['/home']);
+    this.router.navigate(['/manage-book']);
   }
 
   goBack(): void {
