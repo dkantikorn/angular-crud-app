@@ -1,8 +1,9 @@
-import { ReactiveErrors } from '@angular/forms/src/directives/reactive_errors';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+//import { ReactiveErrors } from '@angular/forms/src/directives/reactive_errors';
+//
 
 
 //Memory DB mock for fake back-end demo or test
