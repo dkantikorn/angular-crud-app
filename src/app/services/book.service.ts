@@ -11,7 +11,8 @@ import { BOOKS } from '../mock-book-data';
 @Injectable()
 export class BookService {
     //url = "http://localhost:4200/data/books.json";
-    url = "api/books";
+    //url = "api/books";
+    url = 'http://demo.cakephp-angular2.local/WebAPI/loadAllBooks.json';
     constructor(private http: Http) { }
 
 
@@ -64,7 +65,9 @@ export class BookService {
      */
     private extractData(res: Response) {
         let body = res.json();
-        return body.data || {};
+        //console.log(body);
+        //return body.data || {};
+        return body.books || {};
     }
 
     /**

@@ -1,30 +1,10 @@
 <div class="container">
   <hr>
-  <h3 class="title">Book Details</h3>
-  <table class="table is-bordered is-striped is-narrow is-fullwidth">
-    <thead class="thead">
-      <tr>
-        <th> Id</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Writer</th>
-      </tr>
-    </thead>
-    <tr *ngFor="let bk of allBooks">
-      <td>{{bk.id}}</td>
-      <td>{{bk.name}}</td>
-      <td>{{bk.category}}</td>
-      <td>{{bk.writer}}</td>
-    </tr>
-  </table>
-
-
-  <hr/>
-  <h3 class="title">Get Book by ID </h3>
+  <h1 class="title notification is-danger">Get Book by Params </h1>
   <div>
     <form #bookByIdForm="ngForm" (ngSubmit)="bookById(bookByIdForm)">
       <div class="field">
-        <label class="label">Enter Book Id:</label>
+        <label class="label tag is-warning">Enter Book params posible value: book id | book name | book category | book price | book writer</label>
         <div class="control">
           <input name="bookId" class="input" ngModel required #bookId="ngModel">
         </div>
@@ -35,26 +15,29 @@
           <button class="button is-info" [disabled]="bookByIdForm.invalid">Submit</button>
         </div>
       </div>
-      
+
     </form>
   </div>
   <br/>
-  <div *ngIf="bookByIdForm.submitted">
-    <div *ngIf="book; else loading">
+  <!-- <div *ngIf="bookByIdForm.submitted"> -->
+  <div>
+    <div *ngIf="filteredListOfBooks; else loading">
       <table class="table is-bordered is-striped is-narrow is-fullwidth">
         <thead class="thead">
           <tr>
-            <th> Id</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Writer</th>
+            <th class="has-text-centered">ลำดับ</th>
+            <th> ISBN </th>
+            <th>ชื่อหนังสือ</th>
+            <th>หมวดหมู่</th>
+            <th>ผู้เขียน</th>
           </tr>
         </thead>
-        <tr>
-          <td>{{book.id}}</td>
-          <td>{{book.name}}</td>
-          <td>{{book.category}}</td>
-          <td>{{book.writer}}</td>
+        <tr *ngFor="let book of filteredListOfBooks; let i = index">
+          <td class="has-text-centered">{{i+1}}</td>
+          <td>{{book.Book.isbn}}</td>
+          <td>{{book.Book.name}}</td>
+          <td>{{book.Book.category}}</td>
+          <td>{{book.Book.writer}}</td>
         </tr>
       </table>
     </div>
@@ -62,7 +45,7 @@
       <div *ngIf="dataAvailableById; else notAvailable">
         Loading data...
       </div>
-      <ng-template #notAvailable> Data not Aavailable. </ng-template>
+      <ng-template #notAvailable> ไม่พบข้อมูล. </ng-template>
     </ng-template>
   </div>
 
@@ -116,17 +99,19 @@
       <table class="table table-bordered is-striped is-narrow is-fullwidth">
         <thead class="thead">
           <tr>
-            <th> Id</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Writer</th>
+            <th class="has-text-centered">ลำดับ</th>
+            <th> ISBN </th>
+            <th>ชื่อหนังสือ</th>
+            <th>หมวดหมู่</th>
+            <th>ผู้เขียน</th>
           </tr>
         </thead>
-        <tr *ngFor="let bk of filteredListOfBooks">
-          <td>{{bk.id}}</td>
-          <td>{{bk.name}}</td>
-          <td>{{bk.category}}</td>
-          <td>{{bk.writer}}</td>
+        <tr *ngFor="let book of filteredListOfBooks; let i = index;">
+          <td class="has-text-centered">{{i+1}}</td>
+          <td>{{book.Book.isbn}}</td>
+          <td>{{book.Book.name}}</td>
+          <td>{{book.Book.category}}</td>
+          <td>{{book.Book.writer}}</td>
         </tr>
       </table>
     </div>
@@ -134,7 +119,7 @@
       <div *ngIf="dataAvailableAfterFilter; else notAvailable">
         Loading data...
       </div>
-      <ng-template #notAvailable> Data not Aavailable. </ng-template>
+      <ng-template #notAvailable> ไม่พบข้อมูล. </ng-template>
     </ng-template>
   </div>
 

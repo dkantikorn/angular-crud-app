@@ -1,6 +1,6 @@
 <hr>
 <div class="container">
-  <h3 class="title is-primary">Book POST Form with Observable</h3>
+  <h3 class="title notification is-primary">Book POST Form with Observable</h3>
   <div class="field">
     <label class="label">Id: </label>
     <div class="control">
@@ -11,7 +11,7 @@
   <div class="field">
     <label class="label">Name: </label>
     <div class="control">
-      <input class="input" [(ngModel)]="book.name"/>
+      <input class="input" [(ngModel)]="book.name" />
     </div>
   </div>
 
@@ -47,7 +47,7 @@
 
 <hr>
 <div class="container">
-  <h3 class="title is-primary">Book Details with Observable</h3>
+  <h3 class="title tag is-warning">Book Details with Observable</h3>
   <!-- <ul>
     <li *ngFor="let book of observableBooks | async">
       Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}, Writer: {{book.writer}}
@@ -57,24 +57,26 @@
   <table class="table table-bordered is-striped is-narrow is-fullwidth">
     <thead class="thead">
       <tr>
-        <th>Book ID</th>
-        <th>Book Name</th>
-        <th>Category</th>
-        <th>Writer</th>
+          <th class="has-text-centered">ลำดับ</th>
+          <th> ISBN </th>
+          <th>ชื่อหนังสือ</th>
+          <th>หมวดหมู่</th>
+          <th>ผู้เขียน</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of observableBooks | async"> 
-        <td>{{book.id}}</td>
-        <td>{{book.name}}</td>
-        <td>{{book.category}}</td>
-        <td>{{book.writer}}</td>
+      <tr *ngFor="let book of observableBooks | async; let i = index">
+          <td class="has-text-centered">{{i+1}}</td>
+          <td>{{book.Book.isbn}}</td>
+          <td>{{book.Book.name}}</td>
+          <td>{{book.Book.category}}</td>
+          <td>{{book.Book.writer}}</td>
       </tr>
     </tbody>
   </table>
 
   <hr>
-  <h3 class="title is-primary">Book Details after "subscribe" to Observable </h3>
+  <h3 class="title tag is-success">Book Details after "subscribe" to Observable </h3>
   <!-- <ul>
     <li *ngFor="let book of books">
       Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}, Writer: {{book.writer}}
@@ -83,18 +85,20 @@
   <table class="table table-bordered is-striped is-narrow is-fullwidth">
     <thead class="thead">
       <tr>
-        <th>Book ID</th>
-        <th>Book Name</th>
-        <th>Category</th>
-        <th>Writer</th>
+        <th class="has-text-centered">ลำดับ</th>
+        <th> ISBN </th>
+        <th>ชื่อหนังสือ</th>
+        <th>หมวดหมู่</th>
+        <th>ผู้เขียน</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of books"> 
-        <td>{{book.id}}</td>
-        <td>{{book.name}}</td>
-        <td>{{book.category}}</td>
-        <td>{{book.writer}}</td>
+      <tr *ngFor="let book of books; let i = index">
+        <td class="has-text-centered">{{i+1}}</td>
+        <td>{{book.Book.isbn}}</td>
+        <td>{{book.Book.name}}</td>
+        <td>{{book.Book.category}}</td>
+        <td>{{book.Book.writer}}</td>
       </tr>
     </tbody>
   </table>

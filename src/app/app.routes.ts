@@ -18,10 +18,17 @@ import { BookAddComponent } from './book/book-add.component';
 import { BookUpdateComponent } from './book/book-update.component';
 import { FormComponent } from './form/form.component';
 
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
+
+
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
+
     { path: 'user', component: UserComponent },
-    { path: 'user/:page/:id', component: UserComponent },
+    { path: 'user/detail/:user-id', component: UserDetailComponent },
+    { path: 'user/edit/:user-id', component: UserEditComponent },
+
     { path: 'province', component: ProvinceComponent },
     { path: 'product', component: ProductComponent },
     { path: 'product/:page/:id', component: ProductComponent },
@@ -29,19 +36,28 @@ const routes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'demo', component: DemoComponent },
 
+    {
+        path: 'country',
+        loadChildren: 'app/country/country.module#CountryModule',
+        data: { preload: true }
+    },
+    {
+        path: 'person',
+        loadChildren: 'app/person/person.module#PersonModule'
+    },
 
 
 
-    { path: 'view-detail/:id', component: BookDetailComponent },		  
-	{ path: 'add-book', component: BookAddComponent },
-	{ path: 'manage-book', component: BookComponent },
+    { path: 'view-detail/:id', component: BookDetailComponent },
+    { path: 'add-book', component: BookAddComponent },
+    { path: 'manage-book', component: BookComponent },
     { path: 'update-book/:id', component: BookUpdateComponent },
-    
+
 
     { path: 'form', component: FormComponent },
 
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-	{ path: '**', component: PageNotFoundComponent }
+    { path: '**', component: PageNotFoundComponent }
 ];
 
 

@@ -2,13 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
+//Application Specific Module
+import { CountryModule }  from './country/country.module';
+import { PersonModule }  from './person/person.module';
+
 //import { ReactiveErrors } from '@angular/forms/src/directives/reactive_errors';
 //
 
 
 //Memory DB mock for fake back-end demo or test
-import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
-import { BookData } from './book-data';
+//import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
+//import { BookData } from './book-data';
 
 //Angular Material Design
 //import { MaterialModule } from '@angular/material';
@@ -58,6 +63,8 @@ import { FormControlComponent } from './form/form-control.component';
 import { FormGroupComponent } from './form/form-group.component';
 import { FormArrayComponent } from './form/form-array.component';
 import { FormBuilderComponent } from './form/form-builder.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -87,15 +94,22 @@ import { FormBuilderComponent } from './form/form-builder.component';
     FormControlComponent,
     FormGroupComponent,
     FormArrayComponent,
-    FormBuilderComponent
+    FormBuilderComponent,
+    UserEditComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule,
-    InMemoryWebApiModule.forRoot(BookData)
+
+    CountryModule,
+    PersonModule,
+
+
+    AppRoutingModule
+    //,InMemoryWebApiModule.forRoot(BookData)
   ],
   providers: [
     UserService,

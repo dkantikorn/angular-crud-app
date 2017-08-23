@@ -9,8 +9,14 @@ export class ProvinceObservableService {
 
   constructor(private _http: Http) { }
 
+  // getProvinceObservable(): Observable<any> {
+  //   return this._http.get('http://spc.project.zicure.local/DemoAngularWebAPI/getProvinceObservable.json')
+  //     .map((response: Response) => response.json())
+  //     .catch((error: any) => Observable.throw(error.json().error || 'Server Error !!'))
+  // }
+
   getProvinceObservable(): Observable<any> {
-    return this._http.get('http://spc.project.zicure.local/DemoAngularWebAPI/getProvinceObservable.json')
+    return this._http.get('http://demo.cakephp-angular2.local/WebAPI/loadAllProvinces.json')
       .map((response: Response) => response.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server Error !!'))
   }

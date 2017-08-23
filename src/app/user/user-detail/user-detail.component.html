@@ -1,0 +1,69 @@
+<div class="container">
+    <h4 class="tag is-warning is-medium">User Detail</h4>
+
+    <hr />
+
+    <figure class="image is-128x128">
+        <!-- <img src="http://bulma.io/images/placeholders/128x128.png"> -->
+        <img src="http://demo.cakephp-angular2.local{{user.user.User.picture_path}}" alt="Icon">
+    </figure>
+
+    <table class="table is-bordered is-striped is-narrow is-fullwidth" *ngIf="user">
+        <tr>
+            <th>Username</th>
+            <td>{{user.user.User.username}}</td>
+        </tr>
+
+        <tr>
+            <th>Title name</th>
+            <td>{{user.user.NamePrefix.name}}</td>
+        </tr>
+
+        <tr>
+            <th>First name</th>
+            <td>{{user.user.User.first_name}}</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>{{user.user.User.last_name}}</td>
+        </tr>
+        <tr>
+            <th>Road</th>
+            <td>{{user.user.User.road}}</td>
+        </tr>
+        <tr>
+            <th>Province</th>
+            <td>{{user.user.User.province}}</td>
+        </tr>
+        <tr>
+            <th>District</th>
+            <td>{{user.user.User.district}}</td>
+        </tr>
+        <tr>
+            <th>Sub District</th>
+            <td>{{user.user.User.sub_district}}</td>
+        </tr>
+
+        <tr>
+            <th>Zip code</th>
+            <td>{{user.user.User.zipcode}}</td>
+        </tr>
+
+        <tr>
+            <th>Role</th>
+            <td>{{user.user.Role.name}}</td>
+        </tr>
+
+        <tr>
+            <th>Faculty</th>
+            <td>{{user.user.Faculty.faculty_code}} {{user.user.Faculty.name}}</td>
+        </tr>
+    </table>
+    <div class="field">
+        <div class="control">
+            <button class="button is-primary" (click)="goBack()">
+                Back
+            </button>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-image">
         <figure class="image is-4by3">
-          <img src="http://oacbgt-uat.local{{user.User.picture_path}}" alt="Icon">
+          <img src="http://demo.cakephp-angular2.local{{user.User.picture_path}}" alt="Icon">
         </figure>
       </div>
       <div class="card-content">
@@ -11,7 +11,8 @@
           <div class="media-content">
             <!-- <p class="title is-4"><a routerLink="/user/view/{{user.User.id}}" class="is-success">{{user.User.username}}</a></p>  -->
             <p class="title is-4">
-              <a [routerLink]="['view',user.User.id]" class="is-success">{{user.User.username}}</a>
+              <a [routerLink]="['detail',user.User.id]" class="is-success">{{user.User.username}}</a>
+              
               <!-- 
                 <a 
                   [routerLink]="['/Search']" 
@@ -38,14 +39,10 @@
             </p>
 
             <!-- <p class="title is-4"><a (click)="main('view', user.User.id)" class="is-success">{{user.User.username}}</a></p>  -->
-            <p class="subtitle is-6">{{user.User.first_name}}{{user.User.last_name}}</p>
+            <p class="subtitle is-6">{{user.User.first_name}} {{user.User.last_name}} <a [routerLink]="['edit',user.User.id]" class="tag is-warning">Edit</a></p>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div *ngIf="page == 'view'">
-  {{userInfo | json}}
 </div>

@@ -6,7 +6,8 @@ import { Book } from '../shared/book.model';
 
 @Injectable()
 export class BookGetParamsService {
-    url = "api/books";
+    // url = "api/books";
+    url = 'http://demo.cakephp-angular2.local/WebAPI/loadAllBooks.json';
     constructor(private http: Http) { }
 
     getAllBooks(): Observable<Book[]> {
@@ -15,24 +16,26 @@ export class BookGetParamsService {
             .catch(this.handleError);
     }
 
-    getBookById(bookId: string): Observable<Book[]> {
-        let myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
-        let myParams = new URLSearchParams();
-        myParams.append('id', bookId);
-        let options = new RequestOptions({ headers: myHeaders, params: myParams });
-        return this.http.get(this.url, options)
+    getBookById(params: string): Observable<Book[]> {
+        //let myHeaders = new Headers();
+        //myHeaders.append('Content-Type', 'application/json');
+        // let myParams = new URLSearchParams();
+        // myParams.append('id', bookId);
+        //let options = new RequestOptions({ headers: myHeaders, params: myParams });
+        //let options = new RequestOptions({params: myParams });
+        return this.http.get('http://demo.cakephp-angular2.local/WebAPI/loadAllBooks/' + params + '.json')
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     getBooksAfterFilter(catg: string, wtr: string): Observable<Book[]> {
-        let myHeaders = new Headers();
-        myHeaders.set('Content-Type', 'application/json');
+        // let myHeaders = new Headers();
+        // myHeaders.set('Content-Type', 'application/json');
         let myParams = new URLSearchParams();
         myParams.set('category', catg);
         myParams.set('writer', wtr);
-        let options = new RequestOptions({ headers: myHeaders, params: myParams });
+        //let options = new RequestOptions({ headers: myHeaders, params: myParams });
+        let options = new RequestOptions({ params: myParams });
         return this.http.get(this.url, options)
             .map(this.extractData)
             .catch(this.handleError);
@@ -40,7 +43,10 @@ export class BookGetParamsService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body.data;
+
+        console.log(body);
+        //return body.data;
+        return body.books;
     }
 
     private handleError(error: Response | any) {

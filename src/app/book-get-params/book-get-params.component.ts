@@ -1,3 +1,4 @@
+import { isNull } from 'util';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -16,7 +17,7 @@ export class BookGetParamsComponent implements OnInit {
   filteredListOfBooks: Book[];
 
   errorMessage: String;
-  
+
   dataAvailableById = true;
   dataAvailableAfterFilter = true;
 
@@ -34,30 +35,27 @@ export class BookGetParamsComponent implements OnInit {
   constructor(private bookService: BookGetParamsService) { }
 
   ngOnInit(): void {
-    this.getAllBooks();
+    //this.getAllBooks();
+    this.getBookById();
   }
 
   getAllBooks() {
     this.bookService.getAllBooks()
       .subscribe(
-      data => this.allBooks = data,
+      data => this.filteredListOfBooks = data,
       error => this.errorMessage = <any>error);
   }
 
-  getBookById(bookId: string) {
-    this.dataAvailableById = true;
-    this.book = null;
-    this.bookService.getBookById(bookId)
-      .subscribe(
-      data => {
-        if (data.length > 0) {
-          this.book = data[0];
-        } else {
-          this.dataAvailableById = false;
-        }
-      },
-      error => this.errorMessage = <any>error
-      );
+  getBookById(bookId = null) {
+    if (isNull(bookId)) {
+      this.getAllBooks();
+    } else {
+      this.bookService.getBookById(bookId)
+        .subscribe(
+        data => this.filteredListOfBooks = data,
+        error => this.errorMessage = <any>error
+        );
+    }
   }
 
   getBooksAfterFilter(category: string, writer: string) {
@@ -65,13 +63,7 @@ export class BookGetParamsComponent implements OnInit {
     this.filteredListOfBooks = null;
     this.bookService.getBooksAfterFilter(category, writer)
       .subscribe(
-      data => {
-        if (data.length > 0) {
-          this.filteredListOfBooks = data;
-        } else {
-          this.dataAvailableAfterFilter = false;
-        }
-      },
+      data => this.filteredListOfBooks = data,
       error => this.errorMessage = <any>error
       );
   }

@@ -1,0 +1,58 @@
+<div class="container">
+    <h3 class="notification is-primary">Update User profile / Member profile</h3>
+    <h3 class="tag is-danger is-large">User information</h3>
+
+    <!-- <p *ngIf="userForm.invalid && !formSubmitted" [ngClass]="'help is-danger'"> Form not validated. </p>
+    <p *ngIf="formSubmitted" [ngClass]="'help is-success'"> Form submitted successfully. </p> <br/> -->
+
+    <br>
+    <form [formGroup]="UserForm" (ngSubmit)="onUpdateFormSubmit()">
+
+        <div class="field">
+            <label class="label">ชื้อผู้เข้าใช้งาน : </label>
+            <div class="control">
+                <input type="text" class="input" formControlName="username" />
+            </div>
+            <!-- <p *ngIf="username.invalid" [ngClass]="'help is-danger'">Username is required.</p> -->
+        </div>
+
+        <div class="field">
+            <label class="label">ชื่อตัว : </label>
+            <div class="control">
+                <input type="text" class="input" formControlName="first_name"/>
+            </div>
+            <!-- <p *ngIf="first_name.invalid" [ngClass]="'help is-danger'">First name is required.</p> -->
+        </div>
+
+        <div class="field">
+            <label class="label">นามสกุล : </label>
+            <div class="control">
+                <input type="text" class="input" formControlName="last_name"/>
+            </div>
+            <!-- <p *ngIf="last_name.invalid" [ngClass]="'help is-danger'">Last name is required.</p> -->
+        </div>
+
+        <div class="field">
+            <label class="label">อีเมล์ : </label>
+            <div class="control">
+                <input type="text" class="input" formControlName="email" />
+            </div>
+            <!-- <p *ngIf="email.invalid" [ngClass]="'help is-danger'">Email is required.</p> -->
+        </div>
+
+        <div class="field">
+            <label class="label">เบอร์โทร : </label>
+            <div class="control">
+                <input type="text" class="input" formControlName="office_phone" />
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">มือถือ : </label>
+            <div class="control">
+                <input type="text" class="input" formControlName="mobile_phone" />
+            </div>
+        </div>
+
+    </form>
+</div>

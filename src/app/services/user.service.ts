@@ -12,13 +12,13 @@ export class UserService {
 
   //Function load all user are in the api application
   loadAllUsers() {
-    return this._http.get('http://spc.project.zicure.local/DemoAngularWebAPI/loadAllUsers.json')
+    return this._http.get('http://demo.cakephp-angular2.local/WebAPI/loadAllUsers.json')
       .map(respond => respond.json());
   }
 
   //Function load a user infomation whare match parameter id
   findUserByUserId(id) {
-    return this._http.get(`http://spc.project.zicure.local/DemoAngularWebAPI/findUserByUserId/${id}.json`)
+    return this._http.get(`http://demo.cakephp-angular2.local/WebAPI/findUserByUserId/${id}.json`)
       .map(respond => respond.json());
   }
 

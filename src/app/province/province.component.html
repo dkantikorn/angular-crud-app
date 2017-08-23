@@ -1,16 +1,25 @@
-<table class="table is-bordered is-striped is-narrow is-fullwidth">
-  <thead class="thead">
-    <tr>
-      <th class="has-text-centered">province code</th>
-      <th>name</th>
-      <th>status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let province of provinceList">
-      <td class="has-text-centered">{{province.Province.id}}</td>
-      <td>{{province.Province.name}}</td>
-      <td>{{province.Province.status}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <h2 class="tag is-success is-large">
+    Province List
+  </h2>
+
+  <hr>
+  <table class="table is-bordered is-striped is-narrow is-fullwidth">
+    <thead class="thead">
+      <tr>
+        <th class="has-text-centered"> ลำดับ </th>
+        <th class="has-text-centered">รหัสอ้างอิงจังหวัด</th>
+        <th>ภูมิภาค</th>
+        <th>ชื่อจังหวัด</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let province of provinceList; let i = index">
+        <td class="has-text-centered"> {{i+1}} </td>
+        <td class="has-text-centered">{{province.Province.id}}</td>
+        <td>{{province.Region.name}}</td>
+        <td>{{province.Province.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
