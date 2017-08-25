@@ -72,4 +72,8 @@ export class UserComponent implements OnInit {
     });
   }
 
+  addNewUser(){
+    this.router.navigate(['/user/add']);
+  }
+
 }

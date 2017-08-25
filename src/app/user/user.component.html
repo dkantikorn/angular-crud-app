@@ -1,45 +1,60 @@
-<div class="columns is-multiline" *ngIf="page=='index'">
-  <div class="column is-one-quarter" *ngFor="let user of userList">
-    <div class="card">
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img src="http://demo.cakephp-angular2.local{{user.User.picture_path}}" alt="Icon">
-        </figure>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <div class="media-content">
-            <!-- <p class="title is-4"><a routerLink="/user/view/{{user.User.id}}" class="is-success">{{user.User.username}}</a></p>  -->
-            <p class="title is-4">
-              <a [routerLink]="['detail',user.User.id]" class="is-success">{{user.User.username}}</a>
-              
-              <!-- 
+<div class="container">
+  <div class="field">
+    <div class="control">
+      <button class="button is-primary is-large" (click)="addNewUser()">
+        <span class="icon">
+          <i class="fa fa-plus"></i>
+        </span>
+        <span>
+            Add
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div class="columns is-multiline">
+    <div class="column is-one-quarter" *ngFor="let user of userList">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="http://demo.cakephp-angular2.local{{user.User.picture_path}}" alt="Icon">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <!-- <p class="title is-4"><a routerLink="/user/view/{{user.User.id}}" class="is-success">{{user.User.username}}</a></p>  -->
+              <p class="title is-4">
+                <a [routerLink]="['detail',user.User.id]" class="is-success">{{user.User.username}}</a>
+
+                <!-- 
+                  <a 
+                    [routerLink]="['/Search']" 
+                    [queryParams]="{ q: 'google' }"
+                  >
+                    query params
+                  </a>
+  
                 <a 
-                  [routerLink]="['/Search']" 
-                  [queryParams]="{ q: 'google' }"
+                  [routerLink]="['/user']" 
+                  [queryParams]="{ page: 1 }"
                 >
-                  query params
+                  next page
+                </a> 
+  
+                <a 
+                  [routerLink]="['/profiles']" 
+                  [queryParams]="{min:45,max:50,location:29293}"
+                >
+                  Search
+                  //This will build a route like http://localhost:4200/profiles?min=45&max=50&location=29923
                 </a>
+            -->
+              </p>
 
-              <a 
-                [routerLink]="['/user']" 
-                [queryParams]="{ page: 1 }"
-              >
-                next page
-              </a> 
-
-              <a 
-                [routerLink]="['/profiles']" 
-                [queryParams]="{min:45,max:50,location:29293}"
-              >
-                Search
-                //This will build a route like http://localhost:4200/profiles?min=45&max=50&location=29923
-              </a>
-          -->
-            </p>
-
-            <!-- <p class="title is-4"><a (click)="main('view', user.User.id)" class="is-success">{{user.User.username}}</a></p>  -->
-            <p class="subtitle is-6">{{user.User.first_name}} {{user.User.last_name}} <a [routerLink]="['edit',user.User.id]" class="tag is-warning">Edit</a></p>
+              <!-- <p class="title is-4"><a (click)="main('view', user.User.id)" class="is-success">{{user.User.username}}</a></p>  -->
+              <p class="subtitle is-6">{{user.User.first_name}} {{user.User.last_name}} <a [routerLink]="['edit',user.User.id]" class="tag is-warning">Edit</a></p>
+            </div>
           </div>
         </div>
       </div>

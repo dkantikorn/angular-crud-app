@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import {NgPipesModule} from 'ngx-pipes';
 //Application Specific Module
 import { CountryModule }  from './country/country.module';
 import { PersonModule }  from './person/person.module';
@@ -65,6 +65,8 @@ import { FormArrayComponent } from './form/form-array.component';
 import { FormBuilderComponent } from './form/form-builder.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { UserAddComponent } from './user/user-add/user-add.component';
+import { KeyPairsPipe } from './pipes/key-pairs.pipe';
 
 @NgModule({
   declarations: [
@@ -96,7 +98,9 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
     FormArrayComponent,
     FormBuilderComponent,
     UserEditComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    UserAddComponent,
+    KeyPairsPipe
   ],
   imports: [
     BrowserModule,
@@ -108,7 +112,9 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
     PersonModule,
 
 
-    AppRoutingModule
+    AppRoutingModule,
+
+    NgPipesModule
     //,InMemoryWebApiModule.forRoot(BookData)
   ],
   providers: [

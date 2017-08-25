@@ -2,57 +2,79 @@
     <h3 class="notification is-primary">Update User profile / Member profile</h3>
     <h3 class="tag is-danger is-large">User information</h3>
 
-    <!-- <p *ngIf="userForm.invalid && !formSubmitted" [ngClass]="'help is-danger'"> Form not validated. </p>
-    <p *ngIf="formSubmitted" [ngClass]="'help is-success'"> Form submitted successfully. </p> <br/> -->
 
-    <br>
+    <!-- <p *ngIf="UserForm.invalid && !formSubmitted" [ngClass]="'help is-danger'"> Form not validated. </p> -->
+    <p *ngIf="formSubmitted" [ngClass]="'help is-success'"> Form submitted successfully. </p> <br/>
+    <h4 *ngIf="apiResponse && apiResponse.data.status=='ERROR'" class="notification is-danger is-medium">{{apiResponse.data.message}}</h4>
+    <h4 *ngIf="apiResponse && apiResponse.data.status=='SUCCESS'" class="notification is-success is-medium">{{apiResponse.data.message}}</h4>
+
+
+    <br><br>
     <form [formGroup]="UserForm" (ngSubmit)="onUpdateFormSubmit()">
 
+        <input type="hidden" [(ngModel)]="user.id" formControlName="id" />
         <div class="field">
-            <label class="label">ชื้อผู้เข้าใช้งาน : </label>
+            <label class="label">ชื่อผู้เข้าใช้งาน : </label>
             <div class="control">
-                <input type="text" class="input" formControlName="username" />
+                <input type="text" class="input" [(ngModel)]="user.username" formControlName="username" />
             </div>
-            <!-- <p *ngIf="username.invalid" [ngClass]="'help is-danger'">Username is required.</p> -->
+            <p *ngIf="UserForm.get('username').invalid" [ngClass]="'help is-danger'">Username is required.</p>
         </div>
 
         <div class="field">
             <label class="label">ชื่อตัว : </label>
             <div class="control">
-                <input type="text" class="input" formControlName="first_name"/>
+                <input type="text" class="input" [(ngModel)]="user.first_name" formControlName="first_name" />
             </div>
-            <!-- <p *ngIf="first_name.invalid" [ngClass]="'help is-danger'">First name is required.</p> -->
+            <p *ngIf="UserForm.get('first_name').invalid" [ngClass]="'help is-danger'">First name is required.</p>
         </div>
 
         <div class="field">
             <label class="label">นามสกุล : </label>
             <div class="control">
-                <input type="text" class="input" formControlName="last_name"/>
+                <input type="text" class="input" [(ngModel)]="user.last_name" formControlName="last_name" />
             </div>
-            <!-- <p *ngIf="last_name.invalid" [ngClass]="'help is-danger'">Last name is required.</p> -->
+            <p *ngIf="UserForm.get('last_name').invalid" [ngClass]="'help is-danger'">Last name is required.</p>
         </div>
 
         <div class="field">
             <label class="label">อีเมล์ : </label>
             <div class="control">
-                <input type="text" class="input" formControlName="email" />
+                <input type="text" class="input" [(ngModel)]="user.email" formControlName="email" />
             </div>
-            <!-- <p *ngIf="email.invalid" [ngClass]="'help is-danger'">Email is required.</p> -->
         </div>
 
         <div class="field">
             <label class="label">เบอร์โทร : </label>
             <div class="control">
-                <input type="text" class="input" formControlName="office_phone" />
+                <input type="text" class="input" [(ngModel)]="user.office_phone" formControlName="office_phone" />
             </div>
         </div>
 
         <div class="field">
             <label class="label">มือถือ : </label>
             <div class="control">
-                <input type="text" class="input" formControlName="mobile_phone" />
+                <input type="text" class="input" [(ngModel)]="user.mobile_phone" formControlName="mobile_phone" />
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-primary" type="submit" [disabled]="UserForm.invalid">
+                    <span class="icon">
+                    <i class="fa fa-pencil"> </i>
+                  </span>
+                  <span>บันทึก</span>
+                </button>
+                <button class="button is-light" type="button" (click)="goBack()">
+                    <span class="icon">
+                    <i class="fa fa-arrow-left"> </i>
+                  </span>
+                  <span>ย้อนกลับ</span>
+                </button>
             </div>
         </div>
 
     </form>
+    <br><br>
 </div>

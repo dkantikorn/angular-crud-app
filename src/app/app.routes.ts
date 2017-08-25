@@ -20,7 +20,7 @@ import { FormComponent } from './form/form.component';
 
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
-
+import { UserAddComponent } from './user/user-add/user-add.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -28,6 +28,7 @@ const routes: Routes = [
     { path: 'user', component: UserComponent },
     { path: 'user/detail/:user-id', component: UserDetailComponent },
     { path: 'user/edit/:user-id', component: UserEditComponent },
+    { path: 'user/add', component: UserAddComponent },
 
     { path: 'province', component: ProvinceComponent },
     { path: 'product', component: ProductComponent },
