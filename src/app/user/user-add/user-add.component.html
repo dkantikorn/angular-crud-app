@@ -68,7 +68,7 @@
 
   <!-- <p *ngFor="let role of roles | keyPairs">{{role.key}} => {{role.value}}</p> -->
 
-  <form [formGroup]="UserForm" (ngSubmit)="onAddNewUserFormSubmit()">
+  <form [formGroup]="UserForm" (ngSubmit)="addUserProfile()">
 
     <div class="field">
       <label class="label">กลุ่มผู้เข้าใช้งาน : </label>
@@ -161,6 +161,55 @@
         <input type="text" class="input" [(ngModel)]="user.email" formControlName="email" />
       </div>
       <p *ngIf="UserForm.get('email').invalid" [ngClass]="'help is-danger'">Email is required.</p>
+    </div>
+
+    <div class="field">
+      <label class="label">ที่อยู่ : </label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="user.address" formControlName="address" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">หมู่ : </label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="user.moo" formControlName="moo" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">ถนน : </label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="user.road" formControlName="road" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">ตำบล : </label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="user.sub_district" formControlName="sub_district" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">อำเภอ : </label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="user.district" formControlName="district" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">จังหวัด : </label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="user.province" formControlName="province" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">รหัสไปรษณีย์ : </label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="user.zipcode" formControlName="zipcode" />
+      </div>
     </div>
 
     <div class="field">

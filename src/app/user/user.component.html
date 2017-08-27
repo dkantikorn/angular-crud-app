@@ -1,7 +1,7 @@
 <div class="container">
   <div class="field">
     <div class="control">
-      <button class="button is-primary is-large" (click)="addNewUser()">
+      <button class="button is-primary is-large" (click)="addUserProfile()">
         <span class="icon">
           <i class="fa fa-plus"></i>
         </span>
@@ -53,7 +53,10 @@
               </p>
 
               <!-- <p class="title is-4"><a (click)="main('view', user.User.id)" class="is-success">{{user.User.username}}</a></p>  -->
-              <p class="subtitle is-6">{{user.User.first_name}} {{user.User.last_name}} <a [routerLink]="['edit',user.User.id]" class="tag is-warning">Edit</a></p>
+              <p class="subtitle is-6">{{user.User.first_name}} {{user.User.last_name}}
+                <a [routerLink]="['edit',user.User.id]" class="tag is-warning">Edit</a>
+                <a (click)="deleteUserProfile(user.User.id)" class="tag is-danger">Delete</a>
+              </p>
             </div>
           </div>
         </div>

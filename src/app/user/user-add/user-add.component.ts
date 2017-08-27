@@ -24,7 +24,8 @@ export class UserAddComponent implements OnInit {
   user: any = {
     faculty_id: null, role_id: null, ref_code: null,
     username: null, password: null, name_prefix_id: null, first_name: '', last_name: '', email: '', office_phone: '',
-    mobile_phone: '', picture_path: null
+    mobile_phone: '', address: null, moo: null, road: null, sub_district: null, district: null, province: null, zipcode: null,
+    picture_path: null
   };
 
   UserForm = new FormGroup({
@@ -37,6 +38,13 @@ export class UserAddComponent implements OnInit {
     first_name: new FormControl(null, Validators.required),
     last_name: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
+    address: new FormControl(),
+    moo: new FormControl(),
+    road: new FormControl(),
+    sub_district: new FormControl(),
+    district: new FormControl(),
+    province: new FormControl(),
+    zipcode: new FormControl(),
     office_phone: new FormControl(),
     mobile_phone: new FormControl(null, [Validators.required]),
     picture_path: new FormControl()
@@ -93,7 +101,7 @@ export class UserAddComponent implements OnInit {
    * Function add for new user to the system function do when form valid and you press submit the button
    * @author  sarawutt.b
    */
-  onAddNewUserFormSubmit() {
+  addUserProfile() {
     let files = this.elm.nativeElement.querySelector('#UserPictureProfile').files;
     let formData = new FormData();
     let file = files[0];
@@ -108,6 +116,13 @@ export class UserAddComponent implements OnInit {
     formData.append('data[User][first_name]', this.UserForm.get('first_name').value);
     formData.append('data[User][last_name]', this.UserForm.get('last_name').value);
     formData.append('data[User][email]', this.UserForm.get('email').value);
+    formData.append('data[User][address]', this.UserForm.get('address').value);
+    formData.append('data[User][moo]', this.UserForm.get('moo').value);
+    formData.append('data[User][road]', this.UserForm.get('road').value);
+    formData.append('data[User][sub_district]', this.UserForm.get('sub_district').value);
+    formData.append('data[User][district]', this.UserForm.get('district').value);
+    formData.append('data[User][province]', this.UserForm.get('province').value);
+    formData.append('data[User][zipcode]', this.UserForm.get('zipcode').value);
     formData.append('data[User][office_phone]', this.UserForm.get('office_phone').value);
     formData.append('data[User][mobile_phone]', this.UserForm.get('mobile_phone').value);
 

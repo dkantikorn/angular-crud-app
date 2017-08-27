@@ -59,12 +59,12 @@ export class UserService {
   }
 
 
-/**
- * 
- * Function update for user profile
- * @author sarawutt.b
- * @param user as a object of user information
- */
+  /**
+   * 
+   * Function update for user profile
+   * @author sarawutt.b
+   * @param user as a object of user information
+   */
   addUserProfile(user: any) {
     return this.http.post('http://demo.cakephp-angular2.local/WebAPI/addUserProfile.json', user)
       .map((response: Response) => response.json())
@@ -84,6 +84,22 @@ export class UserService {
       .map((response: Response) => response.json())
       .catch(error => Observable.throw(error) || "server error");
   }
+
+  /**
+   * 
+   * Function delete for the user profile
+   * @param   id as integer id of the user
+   * @author  sarawutt.b
+   */
+  deleteUserProfile(id: any) {
+    // return this.http.get('http://demo.cakephp-angular2.local/WebAPI/deleteUserProfile/' + id + '.json')
+    //   .map((response: Response) => console.log(response.json()))
+    //   .catch(error => Observable.throw(error) || "server error");
+    return this.http.post('http://demo.cakephp-angular2.local/WebAPI/deleteUserProfile/' + id + '.json', JSON.stringify({ id: id }))
+      .map((response: Response) => console.log(response.json()))
+      .catch(error => Observable.throw(error) || "server error");
+  }
+
 
 
 

@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private _userService: UserService, private router: Router) { }
 
   ngOnInit() {
-     this.findListAllUsers();
+    this.findListAllUsers();
     //this.main();
   }
 
@@ -51,7 +51,7 @@ export class UserComponent implements OnInit {
       //console.log(response);
     });
 
-    this.router.navigate(['/user/view' , params]);
+    this.router.navigate(['/user/view', params]);
   }
 
   // Version making link with routerLink="" directive
@@ -72,8 +72,27 @@ export class UserComponent implements OnInit {
     });
   }
 
-  addNewUser(){
+  /**
+   * 
+   * Function add new user
+   * @author  sarawutt.b
+   */
+  addUserProfile() {
     this.router.navigate(['/user/add']);
+  }
+
+  deleteUserProfile(id: any) {
+    console.log(id);
+    // let formData = new FormData();
+    // formData.append('data[User][id]', id, 'formData');
+    // console.log(formData.get('data[User][id]'));
+    this._userService.deleteUserProfile(id).subscribe(
+      success => {
+       this.router.navigate(['/user']);
+      },
+      error => console.log(error),
+      () => console.log('COMPLETE API')
+    );
   }
 
 }
