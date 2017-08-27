@@ -6,13 +6,60 @@
     <span>Add new user / Member</span>
   </h3>
 
+
+
+
+  <!-- <form (ngSubmit)="onUploadFile()">
+
+      <div class="field">
+          <div class="file is-info has-name">
+            <label class="file-label">
+              <input class="file-input" type="file" id="fileInput"/>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fa fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Choose a file...
+                </span>
+              </span>
+              <span class="file-name">
+                Profile picture....
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+              <button class="button is-primary" type="submit">
+                          <span class="icon">
+                          <i class="fa fa-pencil"> </i>
+                        </span>
+                        <span>บันทึก</span>
+                      </button>
+            </div>
+          </div>
+
+
+
+
+  </form> -->
+
+
+
+
+
+
+
+
   <h3 class="tag is-primary is-large">
     <span class="icon">
         <i class="fa fa-info"></i>
     </span>
     <span>User information</span>
   </h3>
-
+  <br><br>
 
   <p *ngIf="formSubmitted" [ngClass]="'help is-success'"> Form submitted successfully. </p> <br/>
   <h4 *ngIf="apiResponse && apiResponse.data.status=='ERROR'" class="notification is-danger is-medium">{{apiResponse.data.message}}</h4>
@@ -21,7 +68,7 @@
 
   <!-- <p *ngFor="let role of roles | keyPairs">{{role.key}} => {{role.value}}</p> -->
 
-  <form [formGroup]="UserForm" (ngSubmit)="addNewUser()">
+  <form [formGroup]="UserForm" (ngSubmit)="onAddNewUserFormSubmit()">
 
     <div class="field">
       <label class="label">กลุ่มผู้เข้าใช้งาน : </label>
@@ -70,6 +117,21 @@
     </div>
 
     <div class="field">
+      <label class="label">คำนำหน้าชื่อ : </label>
+      <div class="control has-icons-left">
+        <div class="select">
+          <select [(ngModel)]="user.name_prefix_id" formControlName="name_prefix_id">
+              <option *ngFor="let namePrefix of namePrefixes | keyPairs;" [ngValue]="namePrefix.key" [selected]="namePrefix.key == ''">{{namePrefix.value}}</option>
+          </select>
+        </div>
+        <div class="icon is-small is-left">
+          <i class="fa fa-navicon"></i>
+        </div>
+      </div>
+      <p *ngIf="UserForm.get('name_prefix_id').invalid" [ngClass]="'help is-danger'">Name Prefix required</p>
+    </div>
+
+    <div class="field">
       <label class="label">ชื่อตัว : </label>
       <div class="control">
         <input type="text" class="input" [(ngModel)]="user.first_name" formControlName="first_name" />
@@ -86,10 +148,19 @@
     </div>
 
     <div class="field">
+      <label class="label">รหัสนักศึกษา : </label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="user.ref_code" formControlName="ref_code" />
+      </div>
+      <p *ngIf="UserForm.get('ref_code').invalid" [ngClass]="'help is-danger'">Studen code is required.</p>
+    </div>
+
+    <div class="field">
       <label class="label">อีเมล์ : </label>
       <div class="control">
         <input type="text" class="input" [(ngModel)]="user.email" formControlName="email" />
       </div>
+      <p *ngIf="UserForm.get('email').invalid" [ngClass]="'help is-danger'">Email is required.</p>
     </div>
 
     <div class="field">
@@ -104,7 +175,50 @@
       <div class="control">
         <input type="text" class="input" [(ngModel)]="user.mobile_phone" formControlName="mobile_phone" />
       </div>
+      <p *ngIf="UserForm.get('mobile_phone').invalid" [ngClass]="'help is-danger'">Mobile is required.</p>
     </div>
+
+    <div class="field">
+      <div class="file is-info has-name">
+        <label class="file-label">
+          <input class="file-input" type="file" id="UserPictureProfile" [(ngModel)]="user.picture_path" formControlName="picture_path" accept=".pdf,.jpg,.jpeg,.gif,.doc,.docx"/>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fa fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file...
+            </span>
+          </span>
+          <span class="file-name">
+            Profile picture....
+          </span>
+        </label>
+      </div>
+      <p *ngIf="UserForm.get('picture_path').invalid" [ngClass]="'help is-danger'">Profile Picture is required.</p>
+    </div>
+
+    <!-- <div class="field">
+      <div class="file is-warning has-name is-fullwidth">
+        <label class="file-label">
+          <input class="file-input" type="file" name="loadFile" (change)="fileChange($event)" accept=".pdf,.jpg,.jpeg,.gif,.doc,.docx">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fa fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file...
+            </span>
+          </span>
+          <span class="file-name">
+            Documentation file....
+          </span>
+        </label>
+      </div>
+    </div> -->
+
+    <!-- <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx"> -->
+    <!-- <p class="tag is-primary">Form is invalid : {{UserForm.invalid}}</p> -->
 
     <div class="field">
       <div class="control">
@@ -122,6 +236,9 @@
                 </button>
       </div>
     </div>
+
+
+
 
   </form>
   <br><br>

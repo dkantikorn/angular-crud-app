@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';// ทำให้ service นี้ถูก inject ได้โดย component อื่น
-import { Http, Response } from '@angular/http';// ใช้เรียก http ไปยัง server ภายนอก
+import { Http, Response, Headers, RequestOptions } from '@angular/http';// ใช้เรียก http ไปยัง server ภายนอก
 import { Router, ActivatedRoute } from '@angular/router';// ใช้เพื่อ redirect หน้าเพจ
 import { Subject } from 'rxjs/Subject';  // import ตัวแปร ประเภท subject ของ rxjs เข้ามาใช้
 import { Observable } from 'rxjs/Observable';
@@ -47,6 +47,30 @@ export class UserService {
     return this.http.get('http://demo.cakephp-angular2.local/WebAPI/facultyFindList.json')
       .map(respond => respond.json());
   }
+
+  /**
+ * 
+ * Function find list for name prefixes
+ * @author  sarawutt.b
+ */
+  namePrefixFindList() {
+    return this.http.get('http://demo.cakephp-angular2.local/WebAPI/namePrefixFindList.json')
+      .map(respond => respond.json());
+  }
+
+
+/**
+ * 
+ * Function update for user profile
+ * @author sarawutt.b
+ * @param user as a object of user information
+ */
+  addUserProfile(user: any) {
+    return this.http.post('http://demo.cakephp-angular2.local/WebAPI/addUserProfile.json', user)
+      .map((response: Response) => response.json())
+      .catch(error => Observable.throw(error) || "server error");
+  }
+
 
 
   /**
@@ -99,6 +123,48 @@ export class UserService {
 
   private getUserUrl(id) {
     return this.url + "/" + id + '.json';
+  }
+
+  /**
+   * 
+   * Function upload file
+   * @param event 
+   */
+  uploadProfile(formData?: any) {
+    return this.http.post('http://demo.cakephp-angular2.local/WebAPI/uploadProfile.json', formData)
+      .map(res => res.json())
+      .catch(error => Observable.throw(error))
+      .subscribe(
+      data => console.log('success'),
+      error => console.log(error)
+      )
+  }
+
+  /**
+ * 
+ * Function upload file
+ * @param event 
+ */
+  fileChange(event) {
+    let fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      let file: File = fileList[0];
+      let formData: FormData = new FormData();
+      formData.append('uploadFile', file, file.name);
+      //let headers = new Headers();
+      /** No need to include Content-Type in Angular 4 */
+      //headers.append('Content-Type', 'multipart/form-data');
+      //headers.append('Accept', 'application/json');
+      // let options = new RequestOptions({ headers: headers });
+      console.log(formData);
+      this.http.post('http://demo.cakephp-angular2.local/WebAPI/uploadProfile.json', formData)
+        .map(res => res.json())
+        .catch(error => Observable.throw(error))
+        .subscribe(
+        data => console.log('success'),
+        error => console.log(error)
+        )
+    }
   }
 
   // login(body: Object): any {
