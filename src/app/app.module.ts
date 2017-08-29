@@ -2,10 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {NgPipesModule} from 'ngx-pipes';
+import { NgPipesModule } from 'ngx-pipes';
 //Application Specific Module
-import { CountryModule }  from './country/country.module';
-import { PersonModule }  from './person/person.module';
+import { CountryModule } from './country/country.module';
+import { PersonModule } from './person/person.module';
+
+
+//Mydatepicker angular2 Plugin
+import { MyDatePickerModule } from 'mydatepicker';
+
+//Pagination Plugin Module
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 //import { ReactiveErrors } from '@angular/forms/src/directives/reactive_errors';
 //
@@ -114,7 +122,12 @@ import { KeyPairsPipe } from './pipes/key-pairs.pipe';
 
     AppRoutingModule,
 
-    NgPipesModule
+    NgPipesModule,
+
+    NgxPaginationModule,
+
+    
+    MyDatePickerModule
     //,InMemoryWebApiModule.forRoot(BookData)
   ],
   providers: [

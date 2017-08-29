@@ -96,7 +96,7 @@ export class UserService {
     //   .map((response: Response) => console.log(response.json()))
     //   .catch(error => Observable.throw(error) || "server error");
     return this.http.post('http://demo.cakephp-angular2.local/WebAPI/deleteUserProfile/' + id + '.json', JSON.stringify({ id: id }))
-      .map((response: Response) => console.log(response.json()))
+      .map((response: Response) => response.json())
       .catch(error => Observable.throw(error) || "server error");
   }
 

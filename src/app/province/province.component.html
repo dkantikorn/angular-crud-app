@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let province of provinceList; let i = index">
+      <tr *ngFor="let province of provinceList | paginate: {itemsPerPage: 10, currentPage: p}; let i = index; ">
         <td class="has-text-centered"> {{i+1}} </td>
         <td class="has-text-centered">{{province.Province.id}}</td>
         <td>{{province.Region.name}}</td>
@@ -22,4 +22,8 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- Pagination Page -->
+  <pagination-controls class="pagination is-right" role="navigation" aria-label="pagination" (pageChange)="p = $event"></pagination-controls>
+
 </div>

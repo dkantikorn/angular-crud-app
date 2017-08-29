@@ -12,8 +12,8 @@ import 'rxjs/add/operator/switchMap';
 export class UserComponent implements OnInit {
 
   page: string = 'index';
-  userList: any;
-  userInfo: any;
+  userList: any = [];
+  userInfo: any = [];
   constructor(private _route: ActivatedRoute, private _userService: UserService, private router: Router) { }
 
   ngOnInit() {
@@ -81,18 +81,25 @@ export class UserComponent implements OnInit {
     this.router.navigate(['/user/add']);
   }
 
-  deleteUserProfile(id: any) {
-    console.log(id);
-    // let formData = new FormData();
-    // formData.append('data[User][id]', id, 'formData');
-    // console.log(formData.get('data[User][id]'));
-    this._userService.deleteUserProfile(id).subscribe(
-      success => {
-       this.router.navigate(['/user']);
-      },
-      error => console.log(error),
-      () => console.log('COMPLETE API')
-    );
+  deleteUserProfile(user) {
+    if (confirm('Are you sure for delete the user of name ' + user.first_name + ' ' + user.last_name + ' ?')) {
+      var index = this.userList.indexOf(user);
+      this.userList.splice(index, 1);
+      this._userService.deleteUserProfile(user.id).subscribe(
+        success => {
+          if (success.message.type == 'ERROR') {
+            alert('Could not be delete the user please try again!');
+            this.userList.splice(index, 0, {User:user});
+          }
+        },
+        error => {
+          alert('Could not be delete the user please try again!');
+          this.userList.splice(index, 0, {User:user});
+          console.log(error)
+        },
+        () => console.log('COMPLETE API')
+      );
+    }
   }
 
 }

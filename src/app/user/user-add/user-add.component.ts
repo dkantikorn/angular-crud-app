@@ -4,6 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { Location } from '@angular/common';
 
+//Date picker Options set option to the datepicker
+import { IMyDpOptions } from 'mydatepicker';
+
 @Component({
   selector: 'app-user-add',
   templateUrl: './user-add.component.html',
@@ -15,19 +18,27 @@ export class UserAddComponent implements OnInit {
   formSubmitted: boolean = false;
   apiResponse: any;
   updateStatus: boolean = false;
+
+  //DDL From PHP find List
   roles: any;
   faculties: any;
   namePrefixes: any;
+
+
+  //File attr
   files: FileList;
+  fileName: string;
+
 
   //User model
   user: any = {
     faculty_id: null, role_id: null, ref_code: null,
     username: null, password: null, name_prefix_id: null, first_name: '', last_name: '', email: '', office_phone: '',
-    mobile_phone: '', address: null, moo: null, road: null, sub_district: null, district: null, province: null, zipcode: null,
-    picture_path: null
+    mobile_phone: '', address: null, birth_date: null, moo: null, road: null, sub_district: null,
+    district: null, province: null, zipcode: null, picture_path: null
   };
 
+  //Reactive Form Control
   UserForm = new FormGroup({
     faculty_id: new FormControl(null, Validators.required),
     role_id: new FormControl(null, Validators.required),
@@ -39,6 +50,7 @@ export class UserAddComponent implements OnInit {
     last_name: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
     address: new FormControl(),
+    birth_date: new FormControl(null, Validators.required),
     moo: new FormControl(),
     road: new FormControl(),
     sub_district: new FormControl(),
@@ -51,6 +63,10 @@ export class UserAddComponent implements OnInit {
   });
 
 
+  //DatePicker Options
+  private myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'dd-mm-yyyy'
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -65,7 +81,6 @@ export class UserAddComponent implements OnInit {
     this.userService.roleFindList().subscribe(
       success => {
         this.roles = success.data;
-        console.log(this.roles);
       },
       error => console.log(error),
       () => console.log('COMPLETE API')
@@ -78,7 +93,6 @@ export class UserAddComponent implements OnInit {
     this.userService.facultyFindList().subscribe(
       success => {
         this.faculties = success.data || {};
-        console.log(this.faculties);
       },
       error => console.log(error),
       () => console.log('COMPLETE API')
@@ -88,7 +102,6 @@ export class UserAddComponent implements OnInit {
     this.userService.namePrefixFindList().subscribe(
       success => {
         this.namePrefixes = success.data || [{}];
-        console.log(this.namePrefixes);
       },
       error => console.log(error),
       () => console.log('COMPLETE API')
@@ -128,7 +141,6 @@ export class UserAddComponent implements OnInit {
 
     this.userService.addUserProfile(formData).subscribe(
       success => {
-        console.log(success);
         this.router.navigate(['/user']);
       },
       error => console.log(error),
@@ -151,6 +163,29 @@ export class UserAddComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
+
+
+  /**
+   * 
+   * Function when user choosing of the input file
+   * @author  sarawutt.b
+   * @return  void
+   */
+  onFileChange(event) {
+    // console.log(event.target.files.length);
+    if (event.target.files.length > 0) {
+      // console.log(event);
+      this.fileName = event.target.files[0].name;
+    }
+  }
+
+
+  /*
+  ------------------------------------------------------------------------------------------------------------------------
+  TEST FUNCTION BELOW HERE
+  ------------------------------------------------------------------------------------------------------------------------
+  */
 
 
   /**
