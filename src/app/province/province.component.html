@@ -1,10 +1,9 @@
 <div class="container">
 
-  <h2 class="notification is-danger">Province Management</h2>
-  <h3 class="tag is-success is-large">Province List</h3>
-
-  <hr>
-
+  <div class="notification is-danger title is-3">Province Management</div>
+  <div class="tag is-success is-large sub-title is-5">Province List : {{provinceList?.length}}</div>
+  <br><br>
+  
   <div class="columns">
     <div class="column">
       <form #provinceForm="ngForm" (ngSubmit)="searchProvince()">
@@ -108,7 +107,7 @@
     <div class="column">
       <!-- Pagination Page -->
       <pagination-controls class="pagination is-right" role="navigation" aria-label="pagination" (pageChange)="p = $event"></pagination-controls>
-
     </div>
   </div>
+
 </div>

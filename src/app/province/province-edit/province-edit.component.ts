@@ -1,3 +1,4 @@
+import { postcssArgs } from '@angular/cli/tasks/eject';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -34,7 +35,6 @@ export class ProvinceEditComponent implements OnInit {
         .subscribe(
         province => {
           this.province = province.data.Province || {}
-          console.log(this.province);
         },
         response => {
           if (response.status == 404) {
@@ -51,11 +51,12 @@ export class ProvinceEditComponent implements OnInit {
   * @author  sarawutt.b
   */
   updateProvince() {
-    console.log("Form data : " + JSON.stringify(this.province));
+    //console.log("Form data : " + JSON.stringify(this.province));
     this.provinceService.updateProvince(this.province).subscribe(
       success => {
-        console.log(success);
-        let message: string = success.message.message || 'บันทึกเปลี่ยนแปลงข้อมูลเรียบร้อยแล้ว';
+        //console.log(success);
+        let message = success.message.message || 'บันทึกเปลี่ยนแปลงข้อมูลเรียบร้อยแล้ว';
+        //console.log(success.message.message);
         alert(message);
         this.router.navigate(['province']);
       },
@@ -64,4 +65,12 @@ export class ProvinceEditComponent implements OnInit {
     );
   }
 
+  /**
+ * 
+ * Function go back when click the back button
+ * @author sarawutt.b
+ */
+  goBack() {
+    this.location.back();
+  }
 }

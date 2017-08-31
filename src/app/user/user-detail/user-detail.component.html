@@ -1,50 +1,6 @@
-<style>
-    .outer {
-        display: block;
-        text-align: center;
-    }
-    /*** Base Caption Styles ***/
-
-    figure.embed,
-    figure.embed-top,
-    figure.overlay,
-    figure.embed-over {
-        display: inline-block;
-        text-align: initial;
-        vertical-align: top;
-        position: relative;
-        margin: 0.5em;
-        font-size: 0.8em;
-        background: white;
-        overflow: hidden;
-    }
-
-    figure.embed img,
-    figure.embed-top img,
-    figure.overlay img,
-    figure.embed-over img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    figure.embed figcaption,
-    figure.embed-top figcaption,
-    figure.overlay figcaption,
-    figure.embed-over figcaption {
-        width: 100%;
-        padding: 0.5em;
-        /* neutral theme */
-        color: rgba(50, 50, 50, 1.0);
-        background: rgba(200, 200, 200, 0.825);
-    }
-
-    figcaption {
-        display: block;
-    }
-</style>
 <div class="container">
-    <h4 class="tag is-warning is-medium">User Detail</h4>
+
+    <div class="notification is-primary is-medium title is-4">User Detail</div>
 
     <hr />
 
@@ -104,12 +60,6 @@
         </tr>
     </table>
 
-    <!-- <div class="outer">
-        <figure class="img1 embed news image is-128x128">
-            <img src="http://demo.cakephp-angular2.local{{user.user.User.picture_path}}" alt="Icon">
-            <figcaption> Center Image </figcaption>
-        </figure>
-    </div> -->
     <div class="field">
         <div class="control">
             <button class="button is-primary" (click)="goBack()">

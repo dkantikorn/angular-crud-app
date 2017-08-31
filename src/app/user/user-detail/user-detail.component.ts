@@ -12,9 +12,14 @@ import 'rxjs/add/operator/switchMap';
 export class UserDetailComponent implements OnInit {
 
     user: any;
-    constructor(private route: ActivatedRoute, private location: Location, private userService: UserService) {}
+    constructor(
+        private route: ActivatedRoute, 
+        private location: Location, 
+        private userService: UserService
+    ) {}
 
     ngOnInit() {
+        //Find User detail by user-id
         this.findUserByUserId();
     }
 

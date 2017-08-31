@@ -1,3 +1,78 @@
-<p>
-  province-detail works!
-</p>
+<div class="container">
+
+  <div class="notification is-info is-medium title is-4">Province Detail</div>
+
+  <hr />
+  <div class="tag is-primary is-large sub-title is-2">Province Information</div>
+  <br><br>
+  <table class="table is-bordered is-striped is-narrow is-fullwidth" *ngIf="province?.data?.Province">
+    <tr>
+      <th>Region</th>
+      <td>{{province?.data?.Region?.name}}</td>
+    </tr>
+    <tr>
+      <th>Province name</th>
+      <td>{{province?.data?.Province?.name}}</td>
+    </tr>
+  </table>
+
+
+  <div class="columns">
+    <div class="column">
+      <div class="tag is-warning is-medium sub-title is-4">District Information</div>
+      <br><br>
+      <table class="table is-narrow is-fullwidth is-striped" *ngIf="province?.data?.District">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Name.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let district of province.data.District;let i = index;">
+            <td>{{i+1}}</td>
+            <td>{{district?.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="column">
+      <div class="tag is-danger is-medium sub-title is-4">Sub District Information</div>
+      <br><br>
+      <table class="table is-narrow is-fullwidth is-striped" *ngIf="province?.data?.SubDistrict">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Name.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subdistrict of province.data.SubDistrict;let i = index;">
+            <td>{{i+1}}</td>
+            <td>{{subdistrict?.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="field">
+
+    <button class="button is-success is-medium" [routerLink]="['/province/add']">
+      <span class="icon"><i class="fa fa-plus"></i></span>
+      <span> Add Province</span>
+    </button>
+
+    <button class="button is-warning is-medium" [routerLink]="['/province/edit/', province?.data?.Province?.id]">
+      <span class="icon"><i class="fa fa-pencil"></i></span>
+      <span> Edit Province</span>
+    </button>
+
+    <button class="button is-dark is-medium" (click)="goBack()">
+        <span class="icon"><i class="fa fa-angle-left"></i></span>
+        <span>Back</span>
+    </button>
+
+  </div>
+</div>
