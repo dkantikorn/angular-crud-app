@@ -1,29 +1,114 @@
 <div class="container">
-  <h2 class="tag is-success is-large">
-    Province List
-  </h2>
+
+  <h2 class="notification is-danger">Province Management</h2>
+  <h3 class="tag is-success is-large">Province List</h3>
 
   <hr>
-  <table class="table is-bordered is-striped is-narrow is-fullwidth">
-    <thead class="thead">
-      <tr>
-        <th class="has-text-centered"> ลำดับ </th>
-        <th class="has-text-centered">รหัสอ้างอิงจังหวัด</th>
-        <th>ภูมิภาค</th>
-        <th>ชื่อจังหวัด</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let province of provinceList | paginate: {itemsPerPage: 10, currentPage: p}; let i = index; ">
-        <td class="has-text-centered"> {{i+1}} </td>
-        <td class="has-text-centered">{{province.Province.id}}</td>
-        <td>{{province.Region.name}}</td>
-        <td>{{province.Province.name}}</td>
-      </tr>
-    </tbody>
-  </table>
 
-  <!-- Pagination Page -->
-  <pagination-controls class="pagination is-right" role="navigation" aria-label="pagination" (pageChange)="p = $event"></pagination-controls>
+  <div class="columns">
+    <div class="column">
+      <form #provinceForm="ngForm" (ngSubmit)="searchProvince()">
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <div class="control">
+              <input type="text" class="input" name="searchTxt" [(ngModel)]="searchTxt" #name="ngModel">
+            </div>
+          </div>
+          <div class="control">
+            <button type="submit" class="button is-info" [disabled]="provinceForm.form.invalid">
+                  <span class="icon">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <span>ค้นหา</span>
+                </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary is-medium" [routerLink]="['add']">
+            <span class="icon">
+              <i class="fa fa-plus"></i>
+            </span>
+            <span>
+                Add
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <table class="table is-bordered is-striped is-narrow is-fullwidth">
+        <thead class="thead">
+          <tr>
+            <th class="has-text-centered"> ลำดับ </th>
+            <th class="has-text-centered">รหัสอ้างอิงจังหวัด</th>
+            <th>ภูมิภาค</th>
+            <th>ชื่อจังหวัด</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let province of provinceList | provinceFilter: searchTxt | paginate: {itemsPerPage: 10, currentPage: p}; let i = index; ">
+            <td class="has-text-centered"> {{i+1}} </td>
+            <td class="has-text-centered">{{province.Province.id}}</td>
+            <td>{{province.Region.name}}</td>
+            <td>{{province.Province.name}}</td>
+            <td>
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-primary is-small" [routerLink]="['detail', province.Province.id]">
+                        <span class="icon is-small">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <span>
+                            รายละเอียด
+                        </span>
+                    </button>
+                </div>
+
+                <div class="control">
+                  <button class="button is-warning is-small" [routerLink]="['edit', province.Province.id]">
+                        <span class="icon is-small">
+                          <i class="fa fa-pencil"></i>
+                        </span>
+                        <span>
+                            แก้ไข
+                        </span>
+                    </button>
+                </div>
+
+                <div class="control">
+                  <button class="button is-danger is-small" (click)="deleteProvince(province.Province)">
+                        <span class="icon is-small">
+                          <i class="fa fa-trash"></i>
+                        </span>
+                        <span>
+                            ลบ
+                        </span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <!-- Pagination Page -->
+      <pagination-controls class="pagination is-right" role="navigation" aria-label="pagination" (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+  </div>
 </div>

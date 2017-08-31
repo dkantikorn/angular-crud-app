@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';// ทำให้ service นี้ถูก inject ได้โดย component อื่น
-import { Http, Response, Headers, RequestOptions } from '@angular/http';// ใช้เรียก http ไปยัง server ภายนอก
-import { Router, ActivatedRoute } from '@angular/router';// ใช้เพื่อ redirect หน้าเพจ
-import { Subject } from 'rxjs/Subject';  // import ตัวแปร ประเภท subject ของ rxjs เข้ามาใช้
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UserService {

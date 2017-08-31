@@ -11,6 +11,7 @@ import { SerchProvincePipe } from '../serch-province.pipe';
 export class ProvinceComponent implements OnInit {
 
   provinceList: any;
+  searchTxt: string;
 
   constructor(private _provinceObservable: ProvinceObservableService, private _route: ActivatedRoute, private _router: Router) { }
 

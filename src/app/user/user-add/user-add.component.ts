@@ -156,9 +156,12 @@ export class UserAddComponent implements OnInit {
   generateArray(obj: any) {
     return Object.keys(obj).map((key) => { return { key: key, value: obj[key] } });
   }
+
+
   /**
    * 
    * Function go bake when you click back
+   * @author  sarawutt.b
    */
   goBack() {
     this.location.back();

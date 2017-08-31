@@ -71,10 +71,19 @@ import { FormControlComponent } from './form/form-control.component';
 import { FormGroupComponent } from './form/form-group.component';
 import { FormArrayComponent } from './form/form-array.component';
 import { FormBuilderComponent } from './form/form-builder.component';
+
+
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserAddComponent } from './user/user-add/user-add.component';
 import { KeyPairsPipe } from './pipes/key-pairs.pipe';
+
+
+import { ProvinceFilterPipe } from './province/pipe/province-filter.pipe';
+import { ProvinceAddComponent } from './province/province-add/province-add.component';
+import { ProvinceEditComponent } from './province/province-edit/province-edit.component';
+import { ProvinceDetailComponent } from './province/province-detail/province-detail.component';
+import { ProvinceService } from './province/service/province.service';
 
 @NgModule({
   declarations: [
@@ -108,7 +117,11 @@ import { KeyPairsPipe } from './pipes/key-pairs.pipe';
     UserEditComponent,
     UserDetailComponent,
     UserAddComponent,
-    KeyPairsPipe
+    KeyPairsPipe,
+    ProvinceFilterPipe,
+    ProvinceAddComponent,
+    ProvinceEditComponent,
+    ProvinceDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -126,7 +139,7 @@ import { KeyPairsPipe } from './pipes/key-pairs.pipe';
 
     NgxPaginationModule,
 
-    
+
     MyDatePickerModule
     //,InMemoryWebApiModule.forRoot(BookData)
   ],
@@ -137,7 +150,8 @@ import { KeyPairsPipe } from './pipes/key-pairs.pipe';
     LoginService,
     BookService,
     BookGetParamsService,
-    TeamManagementService
+    TeamManagementService,
+    ProvinceService
   ],
   bootstrap: [AppComponent]
 })
