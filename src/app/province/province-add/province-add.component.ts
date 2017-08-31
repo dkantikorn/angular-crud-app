@@ -26,7 +26,7 @@ export class ProvinceAddComponent implements OnInit {
       success => this.regions = success.data || [],
       error => console.log(error),
       () => console.log('COMPLETE API')
-    )
+    );
   }
 
   /**

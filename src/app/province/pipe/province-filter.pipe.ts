@@ -14,7 +14,6 @@ export class ProvinceFilterPipe implements PipeTransform {
    */
   transform(value: any, filterBy: string): any {
     filterBy = filterBy ? filterBy.toLocaleLowerCase() : null;
-    console.log(value);
     //First find by province name
     //return filterBy ? value.filter(p => p.Province.name.toLocaleLowerCase().indexOf(filterBy) !== -1) : value;
     return filterBy ? value.filter(data => {

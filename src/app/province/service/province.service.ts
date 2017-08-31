@@ -19,6 +19,27 @@ export class ProvinceService {
 
   /**
    * 
+   * Function get all province
+   * @author  sarawutt.b
+   */
+  findAllProvince(): Observable<any> {
+    return this.http.get('http://demo.cakephp-angular2.local/WebAPI/loadAllProvinces.json')
+      .map((response: Response) => response.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server Error !!'))
+  }
+
+  /**
+   * 
+   * Function find province by province id
+   * @author  sarawutt.b
+   */
+  findProvinceById(id: any) {
+    return this.http.get(`http://demo.cakephp-angular2.local/WebAPI/findProvinceById/${id}.json`)
+      .map(respond => respond.json());
+  }
+
+  /**
+   * 
    * Function find list region
    * @author  sarawutt.b
    */
@@ -35,10 +56,36 @@ export class ProvinceService {
   addProvince(province: any) {
     console.log(JSON.stringify(province));
     return this.http.post('http://demo.cakephp-angular2.local/WebAPI/addProvince.json', province)
-      .map(response => response.json)
+      .map(response => response.json())
       .do(data => console.log('Province data' + JSON.stringify(province)))
       .catch(this.handleError);
   }
+
+/**
+* 
+* Function update new province information
+* @author  sarawutt.b
+*/
+  updateProvince(province: any) {
+    console.log(JSON.stringify(province));
+    return this.http.put('http://demo.cakephp-angular2.local/WebAPI/updateProvince.json', province)
+      .map(response => response.json())
+      .do(data => console.log('Province data' + JSON.stringify(province)))
+      .catch(this.handleError);
+  }
+
+  /**
+   * 
+   * Function delete for the province
+   * @param   id as integer id of the province
+   * @author  sarawutt.b
+   */
+  deleteProvince(id: FormData) {
+    return this.http.post('http://demo.cakephp-angular2.local/WebAPI/deleteProvince/' + id + '.json', JSON.stringify({ id: id }))
+      .map((response: Response) => response.json())
+      .catch(error => Observable.throw(error) || "server error");
+  }
+
 
 
   private handleError(error: Response) {

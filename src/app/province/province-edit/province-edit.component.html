@@ -1,3 +1,60 @@
-<p>
-  province-edit works!
-</p>
+<div class="container">
+  <h2 class="notification is-warning">Modified Province Form</h2>
+
+  <input type="hidden" [(ngModel)]="province.id" name="id" #id="ngModel">
+  <div class="field">
+    <label class="label">Region : </label>
+    <div class="control has-icons-left">
+      <div class="select">
+        <select name="region_id" #region_id>
+            <option *ngFor="let region of regions | keyPairs;" [ngValue]="region.key" [selected]="region.key == province.region_id">{{region.value}}</option>
+          </select>
+      </div>
+      <div class="icon is-small is-left">
+        <i class="fa fa-users"></i>
+      </div>
+    </div>
+    <p *ngIf="!province.region_id" class="help is-danger">Region is required</p>
+  </div>
+
+  <form #provinceForm="ngForm" (ngSubmit)="updateProvince()">
+    <div class="field">
+      <label class="label">Province Code:</label>
+      <div class="control">
+        <input type="number" class="input" name="code" #code="ngModel" [(ngModel)]="province.code" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">name:</label>
+      <div class="control">
+        <input type="text" class="input" name="name" #name="ngModel" [(ngModel)]="province.name" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">name eng:</label>
+      <div class="control">
+        <input type="text" class="input" name="name_eng" #name_eng="ngModel" [(ngModel)]="province.name_eng">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button class="button is-outlined is-success" type="submit" [disabled]="provinceForm.form.invalid">
+            <span class="icon">
+            <i class="fa fa-check"> </i>
+          </span>
+          <span>Save</span>
+        </button>
+        <button class="button is-outlined is-danger" type="button" (click)="goBack()">
+            <span class="icon">
+            <i class="fa fa-arrow-left"> </i>
+          </span>
+          <span>Back</span>
+        </button>
+      </div>
+    </div>
+    
+  </form>
+</div>

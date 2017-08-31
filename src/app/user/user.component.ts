@@ -81,6 +81,12 @@ export class UserComponent implements OnInit {
     this.router.navigate(['/user/add']);
   }
 
+  /**
+   * 
+   * Function delete for the user profile
+   * @param   id as integer id of the user
+   * @author  sarawutt.b
+   */
   deleteUserProfile(user) {
     if (confirm('Are you sure for delete the user of name ' + user.first_name + ' ' + user.last_name + ' ?')) {
       var index = this.userList.indexOf(user);
@@ -89,12 +95,12 @@ export class UserComponent implements OnInit {
         success => {
           if (success.message.type == 'ERROR') {
             alert('Could not be delete the user please try again!');
-            this.userList.splice(index, 0, {User:user});
+            this.userList.splice(index, 0, { User: user });
           }
         },
         error => {
           alert('Could not be delete the user please try again!');
-          this.userList.splice(index, 0, {User:user});
+          this.userList.splice(index, 0, { User: user });
           console.log(error)
         },
         () => console.log('COMPLETE API')
