@@ -10,10 +10,12 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  
   page: string = 'index';
   userList: any = [];
   userInfo: any = [];
+  searchTxt: string;
+  
   constructor(private _route: ActivatedRoute, private _userService: UserService, private router: Router) { }
 
   ngOnInit() {

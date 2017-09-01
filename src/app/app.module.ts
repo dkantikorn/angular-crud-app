@@ -84,6 +84,7 @@ import { ProvinceAddComponent } from './province/province-add/province-add.compo
 import { ProvinceEditComponent } from './province/province-edit/province-edit.component';
 import { ProvinceDetailComponent } from './province/province-detail/province-detail.component';
 import { ProvinceService } from './province/service/province.service';
+import { UserFilterPipe } from './user/pipe/user-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -121,7 +122,8 @@ import { ProvinceService } from './province/service/province.service';
     ProvinceFilterPipe,
     ProvinceAddComponent,
     ProvinceEditComponent,
-    ProvinceDetailComponent
+    ProvinceDetailComponent,
+    UserFilterPipe
   ],
   imports: [
     BrowserModule,
