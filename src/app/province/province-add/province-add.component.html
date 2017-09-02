@@ -1,22 +1,23 @@
 <div class="container">
   <h2 class="notification is-info">Add Province Form</h2>
 
-  <div class="field">
-    <label class="label">Region : </label>
-    <div class="control has-icons-left">
-      <div class="select">
-        <select [(ngModel)]="province.region_id" name="region_id" #region_id="ngModel">
-            <option *ngFor="let region of regions | keyPairs;" [ngValue]="region.key" [selected]="region.key == ''">{{region.value}}</option>
-          </select>
-      </div>
-      <div class="icon is-small is-left">
-        <i class="fa fa-users"></i>
-      </div>
-    </div>
-    <p *ngIf="!province.region_id" class="help is-danger">Region is required</p>
-  </div>
-
   <form #provinceForm="ngForm" (ngSubmit)="addProvince()">
+
+    <div class="field">
+      <label class="label">Region : </label>
+      <div class="control has-icons-left">
+        <div class="select">
+          <select [(ngModel)]="province.region_id" name="region_id" #region_id="ngModel">
+                  <option *ngFor="let region of regions | keyPairs;" [ngValue]="region.key" [selected]="region.key == ''">{{region.value}}</option>
+                </select>
+        </div>
+        <div class="icon is-small is-left">
+          <i class="fa fa-users"></i>
+        </div>
+      </div>
+      <p *ngIf="!province.region_id" class="help is-danger">Region is required</p>
+    </div>
+
     <div class="field">
       <label class="label">Province Code:</label>
       <div class="control">
@@ -54,6 +55,6 @@
         </button>
       </div>
     </div>
-    
+
   </form>
 </div>

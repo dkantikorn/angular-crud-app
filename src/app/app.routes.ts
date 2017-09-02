@@ -17,7 +17,9 @@ import { BookAddComponent } from './book/book-add.component';
 import { BookUpdateComponent } from './book/book-update.component';
 import { FormComponent } from './form/form.component';
 
+
 import { UserComponent } from './user/user.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserAddComponent } from './user/user-add/user-add.component';
@@ -28,21 +30,25 @@ import { ProvinceEditComponent } from './province/province-edit/province-edit.co
 import { ProvinceDetailComponent } from './province/province-detail/province-detail.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuardGuard } from './_guard/auth-guard.guard';
 
 const routes: Routes = [
-    { path: 'home', component: HomeComponent },
 
 
-    { path: 'user', component: UserComponent },
-    { path: 'user/detail/:user-id', component: UserDetailComponent },
-    { path: 'user/edit/:user-id', component: UserEditComponent },
-    { path: 'user/add', component: UserAddComponent },
+
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard] },
+
+    { path: 'login', component: UserLoginComponent },
+    { path: 'user', component: UserComponent, canActivate: [AuthGuardGuard] },
+    { path: 'user/detail/:user-id', component: UserDetailComponent, canActivate: [AuthGuardGuard] },
+    { path: 'user/edit/:user-id', component: UserEditComponent, canActivate: [AuthGuardGuard] },
+    { path: 'user/add', component: UserAddComponent, canActivate: [AuthGuardGuard] },
 
 
-    { path: 'province', component: ProvinceComponent },
-    { path: 'province/add', component: ProvinceAddComponent },
-    { path: 'province/edit/:province-id', component: ProvinceEditComponent },
-    { path: 'province/detail/:province-id', component: ProvinceDetailComponent },
+    { path: 'province', component: ProvinceComponent, canActivate: [AuthGuardGuard] },
+    { path: 'province/add', component: ProvinceAddComponent, canActivate: [AuthGuardGuard] },
+    { path: 'province/edit/:province-id', component: ProvinceEditComponent, canActivate: [AuthGuardGuard] },
+    { path: 'province/detail/:province-id', component: ProvinceDetailComponent, canActivate: [AuthGuardGuard] },
 
 
     { path: 'product', component: ProductComponent },

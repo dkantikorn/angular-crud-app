@@ -35,7 +35,7 @@ import { BookGetParamsService } from './services/book.get.params.service';
 
 import { Planets } from './shared/planets.model';
 import { PlanetsService } from './shared/planets.service';
-import { LoginService } from './services/login.service';
+// import { LoginService } from './services/login.service';
 import { TeamManagementService } from './services/team-management.service';
 
 //Import each componentx
@@ -43,7 +43,6 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { SayComponent } from './say/say.component';
 import { EventComponent } from './event/event.component';
-import { UserComponent } from './user/user.component';
 import { ProductComponent } from './product/product.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
@@ -73,12 +72,17 @@ import { FormArrayComponent } from './form/form-array.component';
 import { FormBuilderComponent } from './form/form-builder.component';
 
 
+//User object import section
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserComponent } from './user/user.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserAddComponent } from './user/user-add/user-add.component';
 import { KeyPairsPipe } from './pipes/key-pairs.pipe';
+import { AuthGuardGuard } from './_guard/auth-guard.guard';
+import { AuthenticationService } from './services/authentication.service';
 
-
+//Province object import section
 import { ProvinceFilterPipe } from './province/pipe/province-filter.pipe';
 import { ProvinceAddComponent } from './province/province-add/province-add.component';
 import { ProvinceEditComponent } from './province/province-edit/province-edit.component';
@@ -123,7 +127,8 @@ import { UserFilterPipe } from './user/pipe/user-filter.pipe';
     ProvinceAddComponent,
     ProvinceEditComponent,
     ProvinceDetailComponent,
-    UserFilterPipe
+    UserFilterPipe,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -146,10 +151,11 @@ import { UserFilterPipe } from './user/pipe/user-filter.pipe';
     //,InMemoryWebApiModule.forRoot(BookData)
   ],
   providers: [
+    AuthGuardGuard,
+    AuthenticationService,
     UserService,
     ProvinceObservableService,
     PlanetsService,
-    LoginService,
     BookService,
     BookGetParamsService,
     TeamManagementService,
