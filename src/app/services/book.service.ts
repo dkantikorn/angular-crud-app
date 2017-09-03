@@ -32,12 +32,12 @@ export class BookService {
      * @param book type of Book model
      * @return Observable<Book>
      */
-    addBookWithObservable(book:Book): Observable<Book> {
-	let headers = new Headers({ 'Content-Type': 'application/json' });
+    addBookWithObservable(book: Book): Observable<Book> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         return this.http.post(this.url, book, options)
-                   .map(this.extractData)
-                   .catch(this.handleErrorObservable);
+            .map(this.extractData)
+            .catch(this.handleErrorObservable);
     }
 
     /**
@@ -45,17 +45,24 @@ export class BookService {
      * Get all Promise for books information
      */
     getBooksWithPromise(): Promise<Book[]> {
-        return this.http.get(this.url).toPromise()
+        return this.http.get(this.url)
+            .toPromise()
             .then(this.extractData)
             .catch(this.handleErrorPromise);
     }
 
-    addBookWithPromise(book:Book): Promise<Book> {
-	let headers = new Headers({ 'Content-Type': 'application/json' });
+    /**
+     * 
+     * Function add for book information in promise stylr
+     * @param book as a book object
+     */
+    addBookWithPromise(book: Book): Promise<Book> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.url, book, options).toPromise()
-	           .then(this.extractData)
-                   .catch(this.handleErrorPromise);
+        return this.http.post(this.url, book, options)
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleErrorPromise);
     }
 
     /**
@@ -65,8 +72,6 @@ export class BookService {
      */
     private extractData(res: Response) {
         let body = res.json();
-        //console.log(body);
-        //return body.data || {};
         return body.books || {};
     }
 
@@ -76,7 +81,6 @@ export class BookService {
      * @param error type of the Observable class
      */
     private handleErrorObservable(error: Response | any) {
-        console.error(error.message || error);
         return Observable.throw(error.message || error);
     }
 
@@ -86,7 +90,6 @@ export class BookService {
      * @param error type of the Promise class
      */
     private handleErrorPromise(error: Response | any) {
-        console.error(error.message || error);
         return Promise.reject(error.message || error);
     }
 
@@ -101,25 +104,28 @@ export class BookService {
         return Promise.resolve(BOOKS);
     }
 
-    addBook(book:Book): void {
-		this.getBooks().then(books => {
-		     let maxIndex = books.length - 1;
-		     let bookWithMaxIndex = books[maxIndex];
-		     book.id = (parseInt(bookWithMaxIndex.id) + 1).toString();
-		     books.push(book);}
-		);
+    addBook(book: Book): void {
+        this.getBooks()
+            .then(books => {
+                let maxIndex = books.length - 1;
+                let bookWithMaxIndex = books[maxIndex];
+                book.id = (parseInt(bookWithMaxIndex.id) + 1).toString();
+                books.push(book);
+            }
+            );
     }
-    
+
     getBook(id: string): Promise<Book> {
         return this.getBooks()
             .then(books => books.find(book => book.id === id));
     }
 
     deleteBook(id: string): void {
-		this.getBooks().then(books => {
-		    let book = books.find(ob => ob.id === id);
-                    let bookIndex = books.indexOf(book);
-                    books.splice(bookIndex, 1);}
-		);
+        this.getBooks().then(books => {
+            let book = books.find(ob => ob.id === id);
+            let bookIndex = books.indexOf(book);
+            books.splice(bookIndex, 1);
+        }
+        );
     }
 } 

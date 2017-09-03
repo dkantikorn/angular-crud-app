@@ -12,6 +12,7 @@ export class UserLoginComponent implements OnInit {
   model: any = {};
   loading = false;
   returnUrl: string;
+  errorMessage:string;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,10 +34,14 @@ export class UserLoginComponent implements OnInit {
     this.loading = true;
     this.authenticationService.login(this.model.username, this.model.password).subscribe(
       data => {
-        console.log(data);
+        let status = data.data.status || 'ERROR';
+        if(status == 'ERROR'){
+          this.errorMessage = data.data.data.message;
+        }
         this.router.navigate([this.returnUrl]);
       },
       error => {
+        this.errorMessage = 'Bad Request Pleast try again!';
         this.loading = false;
       });
   }
