@@ -1,10 +1,23 @@
-<h3>Country List</h3>
-<div *ngFor="let country of countries | async" [ngClass]="'sub-child-menu'">
-  <p>{{country.countryId}}. {{country.countryName}}
-    <a [routerLink]="['view', country.countryId]" routerLinkActive="active">View</a> |
-    <a [routerLink]="['edit', country.countryId]" routerLinkActive="active">Edit</a>
-  </p>
-</div>
-<div [ngClass]="'sub-child-container'">
-  <router-outlet></router-outlet>
+<div class="container">
+  <h3 class="notification is-danger">Country List</h3>
+  
+  <table class="table is-bordered is-striped is-narrow is-fullwidth">
+    <thead class="thead">
+      <tr>
+        <th> ชื่อ </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countries | async" [ngClass]="'sub-child-menu'">
+        <td>{{country.countryId}}. {{country.countryName}}</td>
+        <td><a [routerLink]="['view', country.countryId]" routerLinkActive="active">View</a> | <a [routerLink]="['edit', country.countryId]"
+            routerLinkActive="active">Edit</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div [ngClass]="'sub-child-container'">
+    <router-outlet></router-outlet>
+  </div>
 </div>

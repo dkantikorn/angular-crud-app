@@ -5,10 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.css']
 })
+
 export class EventComponent implements OnInit {
   //  define for the variable handle form input
   firstName = null;
   dataBinding = 'Angular 2 Data Binding';
+
+  constructor() { }
+  ngOnInit() {}
 
   //Function trigger when text change or press enter key
   changeText(txt){
@@ -20,10 +24,4 @@ export class EventComponent implements OnInit {
   clickMe(txt){
     alert('Hello :: ' + txt.value);
   }
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

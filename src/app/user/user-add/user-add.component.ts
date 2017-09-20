@@ -14,7 +14,6 @@ import { IMyDpOptions } from 'mydatepicker';
 })
 export class UserAddComponent implements OnInit {
   objectKeys = Object.keys;
-
   formSubmitted: boolean = false;
   apiResponse: any;
   updateStatus: boolean = false;
@@ -24,11 +23,9 @@ export class UserAddComponent implements OnInit {
   faculties: any;
   namePrefixes: any;
 
-
   //File attr
   files: FileList;
   fileName: string;
-
 
   //User model
   user: any = {
@@ -130,6 +127,7 @@ export class UserAddComponent implements OnInit {
     formData.append('data[User][last_name]', this.UserForm.get('last_name').value);
     formData.append('data[User][email]', this.UserForm.get('email').value);
     formData.append('data[User][address]', this.UserForm.get('address').value);
+    formData.append('data[User][birth_date]', this.UserForm.get('birth_date').value.formatted);
     formData.append('data[User][moo]', this.UserForm.get('moo').value);
     formData.append('data[User][road]', this.UserForm.get('road').value);
     formData.append('data[User][sub_district]', this.UserForm.get('sub_district').value);
@@ -147,14 +145,6 @@ export class UserAddComponent implements OnInit {
       () => console.log('COMPLETE API')
     );
 
-  }
-
-  fileChange(event) {
-    return this.userService.fileChange(event);
-  }
-
-  generateArray(obj: any) {
-    return Object.keys(obj).map((key) => { return { key: key, value: obj[key] } });
   }
 
 
@@ -183,6 +173,15 @@ export class UserAddComponent implements OnInit {
     }
   }
 
+
+
+  fileChange(event) {
+    return this.userService.fileChange(event);
+  }
+
+  generateArray(obj: any) {
+    return Object.keys(obj).map((key) => { return { key: key, value: obj[key] } });
+  }
 
   /*
   ------------------------------------------------------------------------------------------------------------------------

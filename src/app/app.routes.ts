@@ -32,30 +32,38 @@ import { ProvinceDetailComponent } from './province/province-detail/province-det
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuardGuard } from './_guard/auth-guard.guard';
 
+import { InputOutputComponent } from './input-output/input-output.component';
+//Book Firebase database
+import { BookFirebaseComponent } from './book-firebase/book-firebase.component';
+import { BookFirebaseFormComponent } from './book-firebase/book-firebase-form/book-firebase-form.component';
+import { BookFirebaseDetailComponent } from './book-firebase/book-firebase-detail/book-firebase-detail.component';
+
 const routes: Routes = [
 
-
-
     { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard] },
-
     { path: 'login', component: UserLoginComponent },
     { path: 'user', component: UserComponent, canActivate: [AuthGuardGuard] },
     { path: 'user/detail/:user-id', component: UserDetailComponent, canActivate: [AuthGuardGuard] },
     { path: 'user/edit/:user-id', component: UserEditComponent, canActivate: [AuthGuardGuard] },
     { path: 'user/add', component: UserAddComponent, canActivate: [AuthGuardGuard] },
 
-
     { path: 'province', component: ProvinceComponent, canActivate: [AuthGuardGuard] },
     { path: 'province/add', component: ProvinceAddComponent, canActivate: [AuthGuardGuard] },
     { path: 'province/edit/:province-id', component: ProvinceEditComponent, canActivate: [AuthGuardGuard] },
     { path: 'province/detail/:province-id', component: ProvinceDetailComponent, canActivate: [AuthGuardGuard] },
-
 
     { path: 'product', component: ProductComponent },
     { path: 'product/:page/:id', component: ProductComponent },
     { path: 'planets', component: PlanetsComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'demo', component: DemoComponent },
+
+    { path: 'firebase-book', component: BookFirebaseComponent },
+    { path: 'firebase-book/add', component: BookFirebaseFormComponent },
+    { path: 'firebase-book/edit/:book-id', component: BookFirebaseFormComponent },
+    { path: 'firebase-book/detail/:book-id', component: BookFirebaseDetailComponent },
+
+    { path: 'input-output', component: InputOutputComponent },
 
     {
         path: 'country',
@@ -67,20 +75,16 @@ const routes: Routes = [
         loadChildren: 'app/person/person.module#PersonModule'
     },
 
-
-
     { path: 'view-detail/:id', component: BookDetailComponent },
     { path: 'add-book', component: BookAddComponent },
     { path: 'manage-book', component: BookComponent },
     { path: 'update-book/:id', component: BookUpdateComponent },
-
 
     { path: 'form', component: FormComponent },
 
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];
-
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

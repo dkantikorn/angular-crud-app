@@ -1,8 +1,30 @@
-<h3>Edit Country</h3>
-<p *ngIf="country"><b>Country Id: {{country.countryId }} </b></p>
-<form [formGroup]="countryForm" (ngSubmit)="onFormSubmit()">
-   <p> Name: <input formControlName="name"> </p>
-   <p> Capital: <input formControlName="capital"> </p>
-   <p> Currency: <input formControlName="currency"> </p>
-   <p> <button>Update</button> </p>
-</form>  
+<div class="container">
+    <h3 class="notification is-primary">Edit Country</h3>
+    <h4 class="tag is-warning is-large" *ngIf="country"><b>Country Id: {{country.countryId }} </b></h4>
+    <form [formGroup]="countryForm" (ngSubmit)="onFormSubmit()">
+        <div class="field">
+            <label class="label">Name:</label>
+            <div class="control">
+                <input class="input" type="text" formControlName="name">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Capital:</label>
+            <div class="control">
+                <input class="input" type="text" formControlName="capital">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Currency:</label>
+            <div class="control">
+                <input class="input" type="text" formControlName="currency">
+            </div>
+        </div>
+
+        <div class="control">
+                <button type="submit" class="button is-warning">Update</button>
+        </div>
+    </form>
+</div>

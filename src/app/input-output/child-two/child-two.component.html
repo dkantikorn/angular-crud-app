@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="notification is-primary title is-3">{{childTitle}}</div>
+  <div class="tag is-success sub-title is-3">{{studentMsg}} : {{myStdLeader.fname +' '+ myStdLeader.lname}}</div>
+  <br>
+  <div class="tag is-danger sub-title is-3">{{addNumMsg}}</div>
+
+  <div class="field">
+    <label class="label">First Number :</label>
+    <div class="control">
+      <input class="input" (input)="num1=$event.target.value" />
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Second Number: :</label>
+    <div class="control">
+      <input class="input" (input)="num2=$event.target.value"/>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <button class="button is-primary" (click)="addNumber()">Add Number</button>
+    </div>
+  </div>
+</div>

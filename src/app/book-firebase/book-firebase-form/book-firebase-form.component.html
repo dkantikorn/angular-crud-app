@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="notification is-warning title is-3">
+    {{title}}
+  </div>
+  <form [formGroup]="bookForm" (ngSubmit)="addBook()">
+    <div class="field">
+      <label class="label">ISBN:</label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="book.isbn" formControlName="isbn">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Book name:</label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="book.name" formControlName="name">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Book Description:</label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="book.description" formControlName="description">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Author:</label>
+      <div class="control">
+        <input type="text" class="input" [(ngModel)]="book.author" formControlName="author">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button class="button is-primary" type="submit">
+            <span class="icon">
+              <i class="fa fa-plus"> </i>
+            </span>
+            <span>บันทึก</span>
+          </button>
+        <button class="button is-light" type="button" (click)="goBack()">
+            <span class="icon">
+              <i class="fa fa-arrow-left"> </i>
+            </span>
+            <span>ย้อนกลับ</span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

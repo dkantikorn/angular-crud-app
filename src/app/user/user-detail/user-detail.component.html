@@ -1,24 +1,17 @@
 <div class="container">
-
-    <div class="notification is-primary is-medium title is-4">User Detail</div>
-
-    <hr />
-
+    <div class="notification is-primary is-medium title is-4">User Detail</div><hr />
     <figure class="image is-128x128">
         <img src="http://demo.cakephp-angular2.local{{user.user.User.picture_path}}" alt="Icon">
     </figure>
-
     <table class="table is-bordered is-striped is-narrow is-fullwidth" *ngIf="user">
         <tr>
             <th>Username</th>
             <td>{{user.user.User.username}}</td>
         </tr>
-
         <tr>
             <th>Title name</th>
             <td>{{user.user.NamePrefix.name}}</td>
         </tr>
-
         <tr>
             <th>First name</th>
             <td>{{user.user.User.first_name}}</td>
@@ -43,17 +36,14 @@
             <th>Sub District</th>
             <td>{{user.user.User.sub_district}}</td>
         </tr>
-
         <tr>
             <th>Zip code</th>
             <td>{{user.user.User.zipcode}}</td>
         </tr>
-
         <tr>
             <th>Role</th>
             <td>{{user.user.Role.name}}</td>
         </tr>
-
         <tr>
             <th>Faculty</th>
             <td>{{user.user.Faculty.faculty_code}} {{user.user.Faculty.name}}</td>

@@ -1,10 +1,15 @@
-<h2>Welcome to Country Home</h2>
-<nav [ngClass]="'child-menu'">
-  <ul>
-    <li><a [routerLink]="['add']" routerLinkActive="active">Add Country</a></li>
-    <li><a [routerLink]="['list']" routerLinkActive="active">Country List</a></li>
-  </ul>
-</nav>
-<div [ngClass]="'child-container'">
-  <router-outlet></router-outlet>
+<div class="container">
+  <div class="notification is-warning title is-3">Welcome to Country Home</div>
+
+  <nav [ngClass]="'child-menu'">
+    <ul>
+      <li><a [routerLink]="['add']" routerLinkActive="active">Add Country</a></li>
+      <li><a [routerLink]="['list']" routerLinkActive="active">Country List</a></li>
+    </ul>
+  </nav>
+
+  <div [ngClass]="'child-container'">
+    <router-outlet></router-outlet>
+  </div>
+  
 </div>

@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="notification is-danger title is-3">{{parentTitle}}</div>
+
+    <!-- Child One -->
+    <app-child-one [ctMsg]="cityMsg" [ctArray]="cityArray" [studentAddMsg]="stdAddMsg" (addStudentEvent)="saveData($event)" (sendMsgEvent)="printMsg($event)"></app-child-one>
+    <br>
+
+    <div *ngIf="stdFullName" class="notification sub-title is-3 is-success">
+        <p>Student full name : {{stdFullName}}</p>
+    </div>
+
+    <div *ngIf="msg" class="notification sub-title is-3 is-danger">
+        <p>Your message : {{msg}}</p>
+    </div>
+
+
+    <!-- Child two component -->
+    <app-child-two [studentMsg]="stdMsg" [stdLeader]="stdLeaderObj" (addNumberEvent)="printSum($event)"></app-child-two>
+    <br>
+    <div *ngIf="sum" class="notification sub-title is-3 is-info">
+        <p>Sum : {{sum}}</p>
+    </div>
+    
+</div>

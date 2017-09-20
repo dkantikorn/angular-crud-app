@@ -1,9 +1,24 @@
-<h3>Person List</h3>
-<div *ngFor="let person of persons | async" [ngClass]="'sub-child-menu'">
-  <p>{{person.personId}}. {{person.name}}, {{person.city}}
-    <button type="button" (click)="goToEdit(person)">Edit</button>
-  </p>
-</div>
-<div [ngClass]="'sub-child-container'">
-  <router-outlet></router-outlet>
+<div class="container">
+  <h1 class="tag is-large is-primary">Person List</h1>
+  <br><br>
+  <table class="table is-bordered is-striped is-narrow is-fullwidth">
+    <thead class="thead">
+      <tr>
+        <th> ชื่อ </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of persons | async" [ngClass]="'sub-child-menu'">
+        <td>{{person.personId}}. {{person.name}}, {{person.city}}</td>
+        <td>
+          <button type="button" class="button is-warning" (click)="goToEdit(person)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div [ngClass]="'sub-child-container'">
+    <router-outlet></router-outlet>
+  </div>
 </div>

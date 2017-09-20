@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="notification is-primary title is-3">
+    Book firebase detail.
+  </div>
+
+  <table class="table is-bordered is-striped is-narrow is-fullwidth" *ngIf="book">
+    <tr>
+      <th>ISBN: </th>
+      <td>{{book.author}}</td>
+    </tr>
+    <tr>
+      <th>Name: </th>
+      <td>{{book.name}}</td>
+    </tr>
+    <tr>
+      <th>Description: </th>
+      <td>{{book.description}}</td>
+    </tr>
+    <tr>
+      <th>Author: </th>
+      <td>{{book.author}}</td>
+    </tr>
+  </table>
+
+  <div class="field">
+    <div class="control">
+      <button class="button is-danger" (click)="goBack()">
+              Back
+      </button>
+    </div>
+  </div>
+
+</div>

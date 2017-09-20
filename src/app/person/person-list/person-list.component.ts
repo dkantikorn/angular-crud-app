@@ -16,9 +16,11 @@ export class PersonListComponent implements OnInit {
     private personService: PersonService,
     private route: ActivatedRoute,
     private router: Router) { }
+
   ngOnInit() {
     this.persons = this.personService.getPersons();
   }
+
   goToEdit(person: Person) {
     this.router.navigate([person.personId], { relativeTo: this.route });
   }

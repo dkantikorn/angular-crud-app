@@ -1,7 +1,33 @@
-<h3>Add Country</h3>
-<form [formGroup]="countryForm" (ngSubmit)="onFormSubmit()">
-   <p> Name: <input formControlName="name"> </p>
-   <p> Capital: <input formControlName="capital"> </p>
-   <p> Currency: <input formControlName="currency"> </p>
-   <p> <button>Add</button> </p>
-</form> 
+<br>
+<div class="container">
+    <h3 class="notification is-primary">Add Country</h3>
+    <form [formGroup]="countryForm" (ngSubmit)="onFormSubmit()">
+
+        <div class="field">
+            <label class="label"> Name:</label>
+            <div class="control">
+                <input class="input" type="text" formControlName="name">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Capital:</label>
+            <div class="control">
+                <input class="input" type="text" formControlName="capital">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Currency:</label>
+            <div class="control">
+                <input class="input" type="text" formControlName="currency">
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-primary">Add</button>
+            </div>
+        </div>
+    </form>
+</div>

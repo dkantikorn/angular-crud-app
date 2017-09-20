@@ -1,12 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
+
+
+
 import { NgPipesModule } from 'ngx-pipes';
 //Application Specific Module
 import { CountryModule } from './country/country.module';
 import { PersonModule } from './person/person.module';
 
+
+//Import Firebase module
+import { AngularFireModule } from 'angularfire2';
+import { fireBaseConfigure } from '.././environments/firebase.config';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 //Mydatepicker angular2 Plugin
 import { MyDatePickerModule } from 'mydatepicker';
@@ -90,6 +100,17 @@ import { ProvinceDetailComponent } from './province/province-detail/province-det
 import { ProvinceService } from './province/service/province.service';
 import { UserFilterPipe } from './user/pipe/user-filter.pipe';
 
+//Input and Output directive
+import { InputOutputComponent } from './input-output/input-output.component';
+import { ChildOneComponent } from './input-output/child-one/child-one.component';
+import { ChildTwoComponent } from './input-output/child-two/child-two.component';
+
+//Book with firebase database
+import { BookFirebaseComponent } from './book-firebase/book-firebase.component';
+import { BookFirebaseFormComponent } from './book-firebase/book-firebase-form/book-firebase-form.component';
+import { BookFirebaseDetailComponent } from './book-firebase/book-firebase-detail/book-firebase-detail.component';
+import { BookFirebaseService } from './book-firebase/service/book-firebase.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -128,17 +149,24 @@ import { UserFilterPipe } from './user/pipe/user-filter.pipe';
     ProvinceEditComponent,
     ProvinceDetailComponent,
     UserFilterPipe,
-    UserLoginComponent
+    UserLoginComponent,
+    InputOutputComponent,
+    ChildOneComponent,
+    ChildTwoComponent,
+    BookFirebaseComponent,
+    BookFirebaseFormComponent,
+    BookFirebaseDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    BrowserAnimationsModule,
+    ToasterModule,
 
     CountryModule,
     PersonModule,
-
 
     AppRoutingModule,
 
@@ -146,9 +174,12 @@ import { UserFilterPipe } from './user/pipe/user-filter.pipe';
 
     NgxPaginationModule,
 
+    MyDatePickerModule,
 
-    MyDatePickerModule
+    AngularFireModule.initializeApp(fireBaseConfigure),
+    AngularFireDatabaseModule
     //,InMemoryWebApiModule.forRoot(BookData)
+
   ],
   providers: [
     AuthGuardGuard,
@@ -159,7 +190,8 @@ import { UserFilterPipe } from './user/pipe/user-filter.pipe';
     BookService,
     BookGetParamsService,
     TeamManagementService,
-    ProvinceService
+    ProvinceService,
+    BookFirebaseService
   ],
   bootstrap: [AppComponent]
 })

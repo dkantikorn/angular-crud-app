@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="notification is-primary title is-3">{{childTitle}}</div>
+  <h4 class="is-danger">{{ctMsg}}</h4>
+
+  <ul>
+    <li *ngFor="let cname of myctArray">
+      {{cname}}
+    </li>
+  </ul>
+
+  <h4 class="tag is-warning">{{addMsg}}</h4>
+
+  <div class="field">
+    <label class="label">First Name:</label>
+    <div class="control">
+      <input class="input" (input)="student.fname=$event.target.value" />
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Last Name:</label>
+    <div class="control">
+      <input class="input" (input)="student.lname=$event.target.value" />
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <button class="button is-primary" (click)="addStudent()">Add Student</button>
+    </div>
+  </div>
+
+
+  <div class="tag sub-title is-info is-3">
+    {{message}}
+  </div>
+
+  <br><br>
+
+  <div class="field has-addons">
+    <div class="control is-expanded">
+      <input class="input" (input)="msg=$event.target.value" placeholder="Please typing for the message."/>
+    </div>
+    <div class="control">
+      <button class="button is-info" (click)="sendMsg()">Send</button>
+    </div>
+  </div>
+</div>

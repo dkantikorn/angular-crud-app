@@ -1,7 +1,27 @@
-<h3>Edit Person</h3>
-<p *ngIf="person"><b>Person Id: {{person.personId }} </b></p>
-<form [formGroup]="personForm" (ngSubmit)="onFormSubmit()">
-  <p> Name: <input formControlName="name"> </p>
-  <p> City: <input formControlName="city"> </p>
-  <p> <button>Update</button> </p>
-</form>
+<div class="container">
+  <h3 class="notification is-primary is-large">Edit Person</h3>
+
+  <div *ngIf="person" class="tag is-large is-warning is-title is-2">Person Id: {{person.personId }} </div>
+
+  <form [formGroup]="personForm" (ngSubmit)="onFormSubmit()">
+    <div class="field">
+      <label class="label">Name:</label>
+      <div class="control">
+        <input class="input" type="text" formControlName="name">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">City:</label>
+      <div class="control">
+        <input class="input" type="text" formControlName="city">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button class="button is-primary" type="submit">Update</button>
+      </div>
+    </div>
+  </form>
+</div>

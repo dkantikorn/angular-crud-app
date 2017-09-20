@@ -1,7 +1,9 @@
-<h3>Country Detail </h3>
-<div *ngIf="country">
-  <p><b>Id:</b> {{country.countryId}},
-    <b>Name:</b> {{country.countryName}} </p>
-  <p><b>Capital:</b> {{country.capital}},
-    <b>Currency:</b> {{country.currency}}</p>
+<div class="container">
+  <h3 class="notification is-primary">Country Detail </h3>
+  <ul *ngIf="country">
+    <li><b>Id:</b> {{country.countryId}}</li>
+    <li><b>Name:</b> {{country.countryName}}</li>
+    <li><b>Capital:</b> {{country.capital}}</li>
+    <li><b>Currency:</b> {{country.currency}}</li>
+  </ul>
 </div>

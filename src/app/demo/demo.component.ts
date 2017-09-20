@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare const $;
 
 @Component({
   selector: 'app-demo',
@@ -11,10 +12,16 @@ export class DemoComponent implements OnInit {
     { id: 123456, firstName: "sarawutt", lastName: "Bureekaew" },
     { id: 567890, firstName: "sarawutt", lastName: "Bureekaew" }
   ];
-  
+
   constructor() { }
 
   ngOnInit() {
+    $(function () {
+      //$("#helloJquery").hide();
+      $("#helloJquery").click(function () {
+        alert('Hello My jQuery 555+++');
+      });
+    });
   }
 
 }
