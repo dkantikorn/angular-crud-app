@@ -35,7 +35,9 @@ ng generate service shared/planets
 #TUTORIAL ANGULAR 2::
 
 [getting-started-with-angular-2](https://scotch.io/courses/getting-started-with-angular-2).
+
 [Bulma](http://bulma.io/documentation/overview/start/).
+
 https://code.daypilot.org/11244/angular-2-gantt-chart-component-typescript-php-mysql
 https://code.daypilot.org/32525/angular-2-hotel-room-booking-php-mysql
 https://www.youtube.com/watch?v=mU4S0ZAC1FE&t=2871s
