@@ -39,12 +39,15 @@ ng generate service shared/planets
 [Bulma](http://bulma.io/documentation/overview/start/).
 
 https://code.daypilot.org/11244/angular-2-gantt-chart-component-typescript-php-mysql
+
 https://code.daypilot.org/32525/angular-2-hotel-room-booking-php-mysql
+
 https://www.youtube.com/watch?v=mU4S0ZAC1FE&t=2871s
 
 #ANGULAR 2 MATERIAL DESIGN
 
 https://github.com/angular/material2
+
 http://www.mithunvp.com/angular-material-2-angular-cli-webpack/
 
 #TUTORIAL IONIC 2::
@@ -66,6 +69,7 @@ http://www.concretepage.com/angular-2/angular-2-routing-and-navigation-example
 #TUTORIAL ANGULAR HTTP GET
 
 http://www.concretepage.com/angular-2/angular-2-http-get-example
+
 http://www.concretepage.com/angular-2/angular-2-http-get-parameters-headers-urlsearchparams-requestoptions-example
 
 #TUTORIAL ANGULAR HTTP POST
